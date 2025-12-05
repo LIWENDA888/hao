@@ -26,6 +26,7 @@ const QUICK_LINKS = [
     { title: 'Google Ai Studio', url: 'https://aistudio.google.com' },
     { title: 'Google Gemini', url: 'https://gemini.google.com/app' },
     { title: 'Github', url: 'https://github.com' },
+    { title: '阿里云', url: 'https://aliyun.com' },
 ];
 
 // --- 核心分类数据 ---
