@@ -17,8 +17,8 @@ const HEADER_LINKS = [
     { title: '自在造字首页', url: 'https://www.zizao.top' },
     { title: '字体产品', url: 'https://www.zizao.top/fonts' },
     { title: '设计百宝库', url: 'https://bao.zizao.top' },
-    { title: '超引形近字', url: 'https://tools.zizao.top/chaoyin' },
-    { title: '文本编辑器Pro', url: 'https://tools.zizao.top/txt' },
+    { title: '超引形近字', url: 'https://chaoyin.zizao.top' },
+    { title: '文本编辑器Pro', url: 'https://txt.zizao.top' },
 ];
 
 // --- 搜索框下方快捷链接 ---
