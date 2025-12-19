@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const { SEARCH_ENGINES, HEADER_LINKS, QUICK_LINKS, CATEGORIES } = window.AppConfig;
     
@@ -10,58 +9,96 @@ document.addEventListener('DOMContentLoaded', () => {
         isProgrammaticScroll: false
     };
 
+    // 初始化所有分类的默认子分类
     CATEGORIES.forEach(cat => {
         if(cat.subCategories && cat.subCategories.length > 0) {
             state.activeSubCategoryIds[cat.id] = cat.subCategories[0].id;
         }
     });
 
+    // --- 顶部链接渲染 ---
     const renderHeaderLinks = () => {
         const container = document.getElementById('header-links');
         container.innerHTML = HEADER_LINKS.map(link => `
             <a href="${link.url}" target="_blank" rel="noopener noreferrer" 
-               class="whitespace-nowrap text-[13px] md:text-[14px] font-medium text-gray-600/90 dark:text-gray-400 px-2.5 py-1.5 md:px-3 md:py-1.5 rounded-lg hover:bg-black/5 hover:text-[#FF8C19] transition-all dark:hover:bg-white/10 dark:hover:text-[#FF8C19]">
+               class="whitespace-nowrap text-[13px] md:text-[14px] font-medium text-gray-600/90 dark:text-gray-400 px-2.5 py-1.5 rounded-lg hover:bg-black/5 hover:text-[#FF8C19] transition-all dark:hover:bg-white/10 dark:hover:text-[#FF8C19]">
                ${link.title}
             </a>
         `).join('');
     };
 
+    // --- 快捷链接渲染 (优化：圆角加大，悬浮背景半透明) ---
     const renderQuickLinks = () => {
         const container = document.getElementById('quick-links');
         container.innerHTML = QUICK_LINKS.map(link => `
             <a href="${link.url}" target="_blank" rel="noopener noreferrer"
-               class="group relative overflow-hidden rounded-lg md:rounded-xl border border-gray-200 bg-gray-50/50 px-3 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-medium text-gray-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:bg-white hover:text-[#FF8C19] hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-[#FF8C19] dark:hover:border-gray-600">
+               class="group relative overflow-hidden rounded-xl md:rounded-2xl border border-gray-200 bg-gray-50/50 px-3 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-medium text-gray-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:bg-white/60 hover:backdrop-blur-md hover:text-[#FF8C19] hover:shadow-lg hover:shadow-orange-500/10 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700/60 dark:hover:text-[#FF8C19] dark:hover:border-gray-600">
                <span class="relative z-10">${link.title}</span>
             </a>
         `).join('');
     };
 
+    // --- 搜索引擎切换器 (带滑动下划线) ---
     const renderEngineSwitcher = () => {
         const container = document.getElementById('engine-switcher');
-        container.innerHTML = SEARCH_ENGINES.map(engine => {
-            const isActive = state.activeEngine.name === engine.name;
-            return `
+        // 必须设置为 relative 以便滑块定位
+        container.style.position = 'relative';
+        
+        // 生成按钮 HTML
+        const buttonsHtml = SEARCH_ENGINES.map(engine => `
             <button type="button" data-name="${engine.name}" 
-                class="engine-btn relative pb-2 font-medium shrink-0 transition-all duration-300 ${isActive ? 'text-gray-900 dark:text-white scale-105' : 'text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300'}">
+                class="engine-btn relative z-20 pb-2.5 px-1 font-medium text-sm md:text-[15px] shrink-0 transition-colors duration-300 outline-none">
                 ${engine.name}
-                ${isActive ? '<span class="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full bg-[#FF8C19] shadow-[0_0_10px_rgba(255,140,25,0.8)] transition-all"></span>' : ''}
-            </button>`;
-        }).join('');
+            </button>
+        `).join('');
 
-        container.querySelectorAll('.engine-btn').forEach(btn => {
+        // 添加滑块元素
+        const gliderHtml = `<div id="engine-glider" class="glider-transition hidden"></div>`;
+        container.innerHTML = buttonsHtml + gliderHtml;
+
+        // 绑定事件
+        const btns = container.querySelectorAll('.engine-btn');
+        const glider = document.getElementById('engine-glider');
+
+        // 更新 UI 位置的函数
+        const updateUI = () => {
+            btns.forEach(btn => {
+                const isAuth = btn.getAttribute('data-name') === state.activeEngine.name;
+                // 设置文字颜色
+                if (isAuth) {
+                    btn.className = 'engine-btn relative z-20 pb-2.5 px-1 font-bold text-gray-900 dark:text-white shrink-0 transition-colors duration-300 outline-none';
+                    // 移动滑块
+                    glider.classList.remove('hidden');
+                    glider.style.left = `${btn.offsetLeft}px`;
+                    glider.style.width = `${btn.offsetWidth}px`;
+                } else {
+                    btn.className = 'engine-btn relative z-20 pb-2.5 px-1 font-medium text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 shrink-0 transition-colors duration-300 outline-none';
+                }
+            });
+            updateSearchPlaceholder();
+        };
+
+        btns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const name = btn.getAttribute('data-name');
                 state.activeEngine = SEARCH_ENGINES.find(e => e.name === name);
-                renderEngineSwitcher();
-                updateSearchPlaceholder();
+                updateUI();
             });
         });
+
+        // 初始化
+        // 使用 setTimeout 确保 DOM 渲染完成以便计算位置
+        setTimeout(updateUI, 50);
+        // 窗口大小改变时重新计算位置
+        window.addEventListener('resize', updateUI);
     };
 
     const updateSearchPlaceholder = () => {
-        document.getElementById('search-input').placeholder = state.activeEngine.placeholder;
+        const input = document.getElementById('search-input');
+        input.placeholder = state.activeEngine.placeholder;
     };
 
+    // --- 侧边栏渲染 ---
     const renderSidebarLinks = (containerId, isMobile = false) => {
         const container = document.getElementById(containerId);
         container.innerHTML = CATEGORIES.map(cat => {
@@ -88,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // --- 主内容区域渲染 (优化：每排改为 5 个) ---
     const renderContent = () => {
         const container = document.getElementById('content-area');
         container.innerHTML = CATEGORIES.map(cat => `
@@ -101,55 +139,108 @@ document.addEventListener('DOMContentLoaded', () => {
                              <h2 class="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 tracking-tight">${cat.name}</h2>
                         </div>
                         <span class="hidden h-5 w-px bg-gray-300 dark:bg-gray-700 md:block mx-2"></span>
-                        <div class="flex flex-wrap w-full md:w-auto gap-2" id="tabs-${cat.id}"></div>
+                        
+                        <div class="relative flex flex-wrap items-center p-1 bg-gray-100/50 dark:bg-black/20 rounded-full" id="tabs-${cat.id}">
+                            </div>
                     </div>
-                    <div id="grid-${cat.id}" class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6"></div>
+                    <div id="grid-${cat.id}" class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"></div>
                 </div>
             </section>
         `).join('');
 
+        // 为每个分类初始化 Tab 和 内容
         CATEGORIES.forEach(cat => {
-            renderSubCategoryTabs(cat);
-            renderCards(cat);
+            initSubCategoryTabs(cat); // 初始化 Tab 逻辑
+            renderCards(cat); // 渲染默认卡片
         });
         lucide.createIcons();
     };
 
-    // 二级分类按钮渲染
-    const renderSubCategoryTabs = (cat) => {
+    // --- 二级分类 Tab 初始化 (带滑动背景) ---
+    const initSubCategoryTabs = (cat) => {
         const container = document.getElementById(`tabs-${cat.id}`);
-        const activeSubId = state.activeSubCategoryIds[cat.id];
-        
-        container.innerHTML = cat.subCategories.map(sub => {
-            const isActive = sub.id === activeSubId;
-            return `
-            <button type="button" data-main="${cat.id}" data-sub="${sub.id}"
-                class="subcat-btn relative whitespace-nowrap rounded-full px-4 py-1.5 md:px-6 md:py-2.5 text-xs md:text-[15px] font-semibold transition-all duration-300 ease-out border backdrop-blur-sm ${
-                    isActive
-                    ? 'border-[#FF8C19] bg-[#FF8C19] text-white shadow-sm'
-                    : 'border-white/40 bg-white/40 text-gray-500 hover:bg-white/80 hover:text-gray-700 dark:bg-white/5 dark:text-gray-400 dark:border-white/10 dark:hover:bg-white/10'
-                }">
-                ${sub.name}
-            </button>`;
-        }).join('');
+        if (!cat.subCategories || cat.subCategories.length === 0) {
+            container.style.display = 'none';
+            return;
+        }
 
-        container.querySelectorAll('.subcat-btn').forEach(btn => {
+        // 1. 生成按钮 HTML (z-index 10, 确保在滑块之上)
+        const buttonsHtml = cat.subCategories.map(sub => `
+            <button type="button" data-main="${cat.id}" data-sub="${sub.id}"
+                class="subcat-btn relative z-10 px-4 py-1.5 md:px-5 md:py-2 text-xs md:text-[14px] font-semibold transition-colors duration-300 rounded-full cursor-pointer outline-none select-none">
+                ${sub.name}
+            </button>
+        `).join('');
+
+        // 2. 添加滑块 (z-index 1)
+        const gliderHtml = `<div class="subcategory-glider glider-transition hidden" id="glider-${cat.id}"></div>`;
+        container.innerHTML = buttonsHtml + gliderHtml;
+
+        // 3. 逻辑控制
+        const btns = container.querySelectorAll('.subcat-btn');
+        const glider = document.getElementById(`glider-${cat.id}`);
+
+        const updateTabUI = () => {
+            const activeId = state.activeSubCategoryIds[cat.id];
+            
+            btns.forEach(btn => {
+                const subId = btn.getAttribute('data-sub');
+                const isActive = subId === activeId;
+
+                if (isActive) {
+                    // 激活态文字颜色
+                    btn.classList.remove('text-gray-500', 'hover:text-gray-700', 'dark:text-gray-400', 'dark:hover:text-gray-200');
+                    btn.classList.add('text-white');
+                    
+                    // 移动滑块
+                    glider.classList.remove('hidden');
+                    glider.style.left = `${btn.offsetLeft}px`;
+                    glider.style.top = `${btn.offsetTop}px`;
+                    glider.style.width = `${btn.offsetWidth}px`;
+                    glider.style.height = `${btn.offsetHeight}px`;
+                } else {
+                    // 非激活态文字颜色
+                    btn.classList.remove('text-white');
+                    btn.classList.add('text-gray-500', 'hover:text-gray-700', 'dark:text-gray-400', 'dark:hover:text-gray-200');
+                }
+            });
+        };
+
+        // 绑定点击事件
+        btns.forEach(btn => {
             btn.addEventListener('click', () => {
-                state.activeSubCategoryIds[btn.getAttribute('data-main')] = btn.getAttribute('data-sub');
-                renderSubCategoryTabs(cat);
-                renderCards(cat);
+                const subId = btn.getAttribute('data-sub');
+                // 只有当 ID 改变时才触发刷新，避免重复渲染
+                if (state.activeSubCategoryIds[cat.id] !== subId) {
+                    state.activeSubCategoryIds[cat.id] = subId;
+                    updateTabUI(); // 移动滑块
+                    renderCards(cat); // 刷新卡片内容
+                }
             });
         });
+
+        // 监听全局 Resize 以修正滑块位置
+        window.addEventListener('resize', updateTabUI);
+
+        // 初始执行一次
+        setTimeout(updateTabUI, 50);
     };
 
-    // 卡片渲染
+    // --- 卡片渲染 (仅刷新 Grid 内容) ---
     const renderCards = (cat) => {
         const container = document.getElementById(`grid-${cat.id}`);
         const activeSubId = state.activeSubCategoryIds[cat.id];
-        const activeSub = cat.subCategories.find(sub => sub.id === activeSubId);
         
+        const activeSub = cat.subCategories ? cat.subCategories.find(sub => sub.id === activeSubId) : null;
+        
+        // 清空容器并添加淡入动画类
+        container.innerHTML = '';
+        container.classList.remove('animate-fade-in-up');
+        void container.offsetWidth; // 触发重绘
+        container.classList.add('animate-fade-in-up');
+
         if (!activeSub) return;
-        // 获取配置，增加默认值防止报错
+        
         const { gradient, iconName } = activeSub.iconConfig || { gradient: 'from-blue-400 to-cyan-400', iconName: 'link' };
 
         container.innerHTML = activeSub.sites.map(site => `
@@ -165,18 +256,16 @@ document.addEventListener('DOMContentLoaded', () => {
             </a>
         `).join('');
         
-        // 渲染完卡片后需要重新初始化图标
         lucide.createIcons({ root: container });
     };
 
-    // --- Actions ---
+    // --- 滚动与交互逻辑 ---
     const scrollToCategory = (id) => {
         state.activeCategoryId = id;
         state.isProgrammaticScroll = true;
         updateSidebarUI();
         const el = document.getElementById(`category-${id}`);
         if (el) {
-            // Adjust scroll offset based on window width (mobile vs desktop)
             const offset = window.innerWidth < 1024 ? 80 : 110;
             window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - offset, behavior: "smooth" });
             setTimeout(() => { state.isProgrammaticScroll = false; }, 1200);
@@ -191,7 +280,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         if (state.isProgrammaticScroll) return;
         let newActiveId = CATEGORIES[0].id;
-        // Adjusted threshold for mobile
         const threshold = window.innerWidth < 1024 ? 150 : 200;
         
         for (const cat of CATEGORIES) {
@@ -207,8 +295,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleTheme = () => { state.isDark = !state.isDark; localStorage.setItem('theme', state.isDark ? 'dark' : 'light'); applyTheme(); };
     const applyTheme = () => { document.documentElement.classList.toggle('dark', state.isDark); };
     
-    // 初始化时不再有 toggleGlassMode 逻辑
-    
     const animateCount = () => {
         const els = [document.getElementById('site-count'), document.getElementById('mobile-site-count')];
         const total = CATEGORIES.reduce((acc, cat) => acc + (cat.subCategories ? cat.subCategories.reduce((s, sub) => s + (sub.sites ? sub.sites.length : 0), 0) : 0), 0);
@@ -221,9 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     document.getElementById('desktop-logo').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    
     document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
-    
     document.getElementById('search-form').addEventListener('submit', (e) => {
         e.preventDefault();
         const query = document.getElementById('search-input').value;
@@ -233,20 +317,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleMobileMenu = (show) => {
         const sidebar = document.getElementById('mobile-sidebar');
         const overlay = document.getElementById('mobile-sidebar-overlay');
-        
         if (show) {
             overlay.classList.remove('hidden');
-            // Small timeout to allow transition
-            setTimeout(() => {
-                overlay.classList.remove('opacity-0');
-                sidebar.classList.remove('translate-x-[-100%]');
-            }, 10);
+            setTimeout(() => { overlay.classList.remove('opacity-0'); sidebar.classList.remove('translate-x-[-100%]'); }, 10);
         } else {
-            overlay.classList.add('opacity-0');
-            sidebar.classList.add('translate-x-[-100%]');
-            setTimeout(() => {
-                overlay.classList.add('hidden');
-            }, 300);
+            overlay.classList.add('opacity-0'); sidebar.classList.add('translate-x-[-100%]');
+            setTimeout(() => { overlay.classList.add('hidden'); }, 300);
         }
     };
     document.getElementById('mobile-menu-btn').addEventListener('click', () => toggleMobileMenu(true));
@@ -257,12 +333,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('close-about').addEventListener('click', () => modal.classList.remove('open'));
     modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
 
+    // 初始化执行
     applyTheme();
     renderHeaderLinks();
     renderQuickLinks();
-    renderEngineSwitcher();
+    renderEngineSwitcher(); // 现在包含滑动初始化
     updateSidebarUI();
-    renderContent();
+    renderContent(); // 现在包含 Tab 滑动初始化
     animateCount();
-    lucide.createIcons();
 });

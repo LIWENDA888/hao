@@ -8,9 +8,7 @@
     <meta property="og:type" content="website">
     <link rel="icon" href="https://pic3.fukit.cn/autoupload/NWINCyTOTWqNUcPQazQq69iO_OyvX7mIgxFBfDMDErs/20251123/AR9P/ico.ico" type="zizaoicon">
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         tailwind.config = {
@@ -26,6 +24,21 @@
                     },
                     screens: {
                         'xs': '475px',
+                        '3xl': '1920px',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'fade-in-up': 'fadeInUp 0.4s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 },
             },
@@ -35,24 +48,19 @@
 </head>
 <body class="min-h-screen bg-[#F5F5F7] text-gray-900 transition-colors duration-500 dark:bg-[#000000] dark:text-gray-100 font-sans selection:bg-[#FF8C19]/30 overflow-x-hidden">
 
-    <!-- 环境光斑 (默认显示) -->
     <div id="ambient-bg" class="fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-700">
         <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-blue-400/10 blur-[80px] md:blur-[120px] dark:bg-blue-900/10 mix-blend-multiply dark:mix-blend-screen animate-blob"></div>
         <div class="absolute top-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-orange-400/10 blur-[80px] md:blur-[120px] dark:bg-orange-900/10 mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-2000"></div>
         <div class="absolute bottom-[-20%] left-[20%] w-[60vw] h-[60vw] rounded-full bg-purple-400/10 blur-[80px] md:blur-[120px] dark:bg-purple-900/10 mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-4000"></div>
     </div>
 
-    <!-- Header -->
     <header class="fixed top-0 left-0 z-50 w-full py-3 md:py-4 pointer-events-none">
-        <div id="header-bg" class="absolute inset-0 bg-[#F2F2F7]/95 dark:bg-black/95 transition-colors duration-500 border-b border-gray-200 dark:border-white/5"></div>
+        <div id="header-bg" class="absolute inset-0 bg-[#F2F2F7]/80 dark:bg-black/80 transition-colors duration-500"></div>
         
         <div class="relative z-10 mx-auto flex w-full max-w-[1920px] px-4 md:px-8 items-center justify-between">
-            <!-- 顶部左侧链接 -->
             <div class="relative z-50 flex items-center gap-4 md:gap-6 overflow-x-auto no-scrollbar mask-gradient-right pb-1 pointer-events-auto max-w-[calc(100%-140px)] md:max-w-[calc(100%-240px)]" id="header-links">
-                <!-- JS 渲染 -->
-            </div>
+                </div>
             
-            <!-- 顶部右侧功能 -->
             <div class="relative z-50 flex items-center gap-2 md:gap-4 pl-4 shrink-0 pointer-events-auto">
                 <button id="about-btn" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium text-gray-500 hover:text-[#FF8C19] hover:bg-black/5 transition-all dark:text-gray-400 dark:hover:text-[#FF8C19] dark:hover:bg-white/10">
                     <i data-lucide="info" class="w-4 h-4"></i>
@@ -69,12 +77,10 @@
         </div>
     </header>
 
-    <!-- 移动端菜单按钮 -->
     <button id="mobile-menu-btn" class="fixed bottom-6 right-6 z-[60] rounded-full bg-[#FF8C19] p-3.5 md:p-4 text-white shadow-lg shadow-[#FF8C19]/40 lg:hidden hover:bg-[#e67e17] transition-all active:scale-95">
         <i data-lucide="menu" class="h-6 w-6"></i>
     </button>
 
-    <!-- 移动端侧边栏 -->
     <div id="mobile-sidebar-overlay" class="fixed inset-0 z-[60] bg-black/20 backdrop-blur-sm hidden lg:hidden opacity-0 transition-opacity duration-300"></div>
     <aside id="mobile-sidebar" class="fixed left-0 top-0 z-[70] h-full w-[280px] transform translate-x-[-100%] overflow-y-auto bg-white border-r border-gray-200 px-6 py-8 transition-transform duration-300 lg:hidden dark:bg-gray-900 dark:border-gray-800 shadow-2xl">
         <div class="mb-8 px-2 flex flex-col items-center">
@@ -84,15 +90,12 @@
         <nav id="mobile-nav-links" class="space-y-2 pb-20"></nav>
     </aside>
 
-    <!-- 主内容区域 -->
     <main class="relative z-10 mx-auto w-full max-w-full lg:max-w-[95%] 2xl:max-w-[1920px] px-3 pt-[72px] md:pt-[92px] pb-8 md:px-8">
         
         <div class="grid grid-cols-1 lg:grid-cols-[256px_1fr] gap-6 md:gap-8 items-start">
             
-            <!-- 1. 左侧栏 (Sticky) -->
             <div class="hidden lg:block sticky top-[92px] z-40 h-[calc(100vh-92px-32px)]">
                 <aside class="w-full h-full flex flex-col panel-container p-1 rounded-3xl transition-all duration-500">
-                    <!-- Logo & Stats -->
                     <div class="pt-6 pb-4 flex flex-col items-center shrink-0 relative">
                         <div class="glass-decoration absolute top-4 left-1/2 -translate-x-1/2 w-32 h-16 bg-[#FF8C19]/10 blur-xl rounded-full pointer-events-none opacity-0 transition-opacity"></div>
                         <img id="desktop-logo" src="https://pic3.fukit.cn/autoupload/NWINCyTOTWqNUcPQazQq69iO_OyvX7mIgxFBfDMDErs/20251123/D8a9/219X79/haologo.png/webp" alt="Logo" class="w-[85%] h-auto object-contain cursor-pointer relative z-10 transition-transform hover:scale-105 duration-500" />
@@ -109,15 +112,15 @@
                 </aside>
             </div>
 
-            <!-- 2. 右侧内容区域 -->
             <div class="min-w-0 flex flex-col gap-5 md:gap-8">
                
-               <!-- 搜索 & 快捷链接面板 -->
                <div class="panel-container p-5 md:p-8 flex flex-col justify-center gap-4 md:gap-6 relative overflow-hidden rounded-2xl md:rounded-3xl transition-all duration-500">
                     <div class="glass-decoration absolute -right-20 -top-20 w-64 h-64 bg-blue-400/10 blur-[80px] rounded-full pointer-events-none opacity-0 transition-opacity"></div>
                     
                     <div class="flex flex-col transition-all duration-500 w-full relative z-10">
-                        <div id="engine-switcher" class="flex gap-4 md:gap-6 mb-3 md:mb-4 pl-1 md:pl-2 text-sm md:text-[15px] overflow-x-auto no-scrollbar mask-gradient-right"></div>
+                        <div id="engine-switcher" class="flex gap-4 md:gap-6 mb-3 md:mb-4 pl-1 md:pl-2 overflow-x-auto no-scrollbar mask-gradient-right">
+                           </div>
+
                         <form id="search-form" class="relative group flex items-center overflow-hidden rounded-xl md:rounded-2xl border border-gray-200 bg-gray-50 transition-all duration-300 ease-out hover:bg-white hover:border-gray-300 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                             <div class="pl-3 md:pl-5 text-gray-400 group-focus-within:text-[#FF8C19] transition-colors duration-300">
                                 <i data-lucide="search" class="h-5 w-5 md:h-6 md:w-6"></i>
@@ -131,13 +134,11 @@
                     <div id="quick-links" class="flex flex-wrap gap-2 md:gap-3 pl-1 md:pl-2 relative z-10"></div>
                </div>
 
-               <!-- 卡片分类内容区域 -->
                <div id="content-area" class="flex flex-col gap-5 md:gap-8"></div>
             </div>
         </div>
     </main>
 
-    <!-- 关于我们 弹窗 -->
     <div id="about-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 hidden opacity-0 transition-all duration-300">
         <div class="w-full max-w-sm p-8 bg-white dark:bg-gray-900 rounded-3xl shadow-2xl transform scale-95 transition-transform duration-300 relative" id="about-modal-content">
             <button id="close-about" class="absolute top-4 right-4 p-2 text-gray-400 hover:text-[#FF8C19] transition-colors bg-gray-100 dark:bg-gray-800 rounded-full">
