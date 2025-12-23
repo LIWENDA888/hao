@@ -796,53 +796,26 @@ const CATEGORIES = [
           name: '#版权登记', 
           iconConfig: { gradient: 'from-pink-400 to-cyan-600',  iconName: 'copyright' },
           sites: [
-              // --- 国家级及直辖市 ---
-              { title: '中国版权保护中心', description: '国家级权威机构，美术作品登记300元/件起', url: 'https://www.ccopyright.com.cn' },
-             { title: '北京版权登记', description: '在线免费办理，搜索“作品自愿登记”', url: 'https://banshi.beijing.gov.cn' },
-             { title: '上海版权登记', description: '通过“一网通办”实名认证，在线免费办理', url: 'https://zwdt.sh.gov.cn' },
-             { title: '天津版权登记', description: '天津市作品著作权登记系统，在线免费办理', url: 'http://www.tjsbqxh.org.cn' },
-             { title: '重庆版权登记', description: '在线免费办理，支持在线领证，30天内办结', url: 'https://cqca.com.cn' },
-             // --- 华东地区 ---
-             { title: '江苏版权登记', description: '在线免费办理，认证后进入著作权登记系统', url: 'https://jscopyright.cn' },
-             { title: '浙江版权登记', description: '在线办理需“浙里办”认证，收费150元/件', url: 'http://www.zjbanquan.org' },
-             { title: '安徽版权登记', description: '安徽版权在线数字服务平台，在线免费办理', url: 'https://bqzx.ahcaee.com' },
-             { title: '福建版权登记', description: '福建省作品自愿登记系统，在线免费办理', url: 'http://copyright.fjxuanchuan.cn' },
-             { title: '江西版权登记', description: '江西版权保护中心，在线免费办理并领证', url: 'http://jxbqbh.com' },
-             { title: '山东版权登记', description: '在线免费办理，实名认证后进入作品登记', url: 'https://sdszpdj.com' },
-             // --- 华中地区 ---
-             { title: '湖北版权登记', description: '湖北省版权登记平台，在线免费办理', url: 'http://www.ccct.net.cn' },
-             { title: '湖南版权登记', description: '通过省政务服务网办理，在线免费申报', url: 'https://hunan.gov.cn' },
-             { title: '河南版权登记', description: '通过河南法律服务网办理，在线免费申报', url: 'https://ha.12348.gov.cn' },
-             // --- 华南地区 ---
-             { title: '广东版权登记', description: '广东省版权登记系统，收费150元/件', url: 'http://www.gd-copyright.cn' },
-             { title: '广西版权登记', description: '在线免费办理，需经三阶段审核', url: 'https://gxbq.gxbgsx.com' },
-             { title: '海南版权登记', description: '在线免费办理，办结时限约为20个工作日', url: 'https://wssp.hainan.gov.cn' },
-             // --- 华北地区 ---
-             { title: '河北版权登记', description: '河北省版权服务平台，在线免费办理', url: 'https://www.hebeibanquan.com.cn' },
-             { title: '山西版权登记', description: '通过省人民政府办事大厅进行在线申报', url: 'http://www.shanxi.gov.cn' },
-             { title: '内蒙古版权登记', description: '由内蒙古知识产权服务中心承办线上登记', url: 'http://www.nmcpo.com' },
-             // --- 东北地区 ---
-             { title: '辽宁版权登记', description: '辽宁省数字化版权管理服务系统，在线办理', url: 'https://dcms.nncec.com' },
-             { title: '吉林版权登记', description: '吉林省版权局官方办理，在线免费登记', url: 'http://jl.gov.cn' },
-             { title: '黑龙江版权登记', description: '通过省政务服务网实名认证后在线办理', url: 'https://www.zwfw.hlj.gov.cn' },
-             // --- 西北地区 ---
-             { title: '陕西版权登记', description: '陕西省版权登记平台，在线免费办理', url: 'https://www.sxxc.gov.cn' },
-             { title: '甘肃版权登记', description: '支持平台或公众号在线申报，办结约30天', url: 'https://gsbqfw.com' },
-             { title: '宁夏版权登记', description: '宁夏政务服务网办理，办结约30个工作日', url: 'https://zwfw.nx.gov.cn' },
-             { title: '青海版权登记', description: '青海省版权局作品登记系统，在线免费办理', url: 'https://qh.gov.cn' },
-             { title: '新疆版权登记', description: '新疆政务服务网办理，搜索作品自愿登记', url: 'https://zwfw.xinjiang.gov.cn' },
-             // --- 西南地区 ---
-             { title: '四川版权登记', description: '四川省版权局官方办理，建议先看登记指南', url: 'https://sc-copyright.org' },
-             { title: '贵州版权登记', description: '收费50元/次，省内民族民间文化作品免费', url: 'https://gzbqdj.com' },
-             { title: '云南版权登记', description: '云南版权网，在线免费办理，时限约30天', url: 'http://www.ynbq.gov.cn' },
-             { title: '西藏版权登记', description: '西藏自治区版权局官方办理，支持在线登记', url: 'https://xz.gov.cn' }
+             { title: '北京版权登记', description: '完全免费，国内公认最快最稳定的在线办理通道', url: 'https://banshi.beijing.gov.cn' },
+             { title: '上海版权登记', description: '一网通办实名认证，全流程电子化，办证效率极高', url: 'https://shbqdj.cn/#/index' },
+             { title: '江苏版权登记', description: '完全免费，系统交互友好，是华东设计师的首选', url: 'https://jscopyright.cn' },
+             { title: '山东版权登记', description: '流程透明，在线免费办理，官方指南非常详尽', url: 'https://sdszpdj.com' },
+             { title: '四川版权登记', description: '完全免费，西南地区最稳定的官方在线登记平台', url: 'https://sc-copyright.org' },
+             { title: '江西版权登记', description: '特色是审核后可直接下载电子证书，无需等待邮寄', url: 'http://jxbqbh.com' },
+             { title: '湖北版权登记', description: '在线免费，实名后即可申报，办结速度位于全国前列', url: 'http://www.ccct.net.cn' },
+             { title: '福建版权登记', description: '完全免费，办结时限约为15个工作日，效率极高', url: 'http://copyright.fjxuanchuan.cn' },
+             { title: '重庆版权登记', description: '完全免费，支持在线领证，系统对移动端适配良好', url: 'https://cqca.com.cn' },
+             { title: '安徽版权登记', description: '数字服务平台操作简便，实名认证后即可免费办理', url: 'https://bqzx.ahcaee.com' },
+             { title: '陕西版权登记', description: '完全免费，办结时限短，是西北地区首选的登记站', url: 'https://www.sxxc.gov.cn' },
+             { title: '天津版权登记', description: '系统稳定，完全免费，提供保姆级的填报教学指南', url: 'http://www.tjsbqxh.org.cn' }
           ]
         },
         { 
           id: 'J4', 
-          name: '#维权保护', 
+          name: '#版权保护', 
           iconConfig: { gradient: 'from-pink-400 to-cyan-600',  iconName: 'shield-check' },
           sites: [
+            { title: '中国版权保护中心', description: '国家级权威机构，美术作品登记300元/件起', url: 'https://www.ccopyright.com.cn' },
             { title: '可信时间戳 (TSA)', description: '国家授时中心支持，为电子作品提供秒级确权法律证明', url: 'https://www.tsa.cn/' },
             { title: '鲸版权', description: '智能版权管理平台，涵盖确权、全网监测及一键维权', url: 'https://www.whaleip.com/' },
             { title: '维权骑士', description: '设计师首选的原创保护工具，专注于插画与图文防盗', url: 'https://rightknights.com/' }
