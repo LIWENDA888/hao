@@ -848,7 +848,8 @@ const CATEGORIES = [
             { title: '中国版权保护中心', description: '国家级权威机构，美术作品登记300元/件起', url: 'https://www.ccopyright.com.cn' },
             { title: '可信时间戳 (TSA)', description: '国家授时中心支持，为电子作品提供秒级确权法律证明', url: 'https://www.tsa.cn/' },
             { title: '鲸版权', description: '智能版权管理平台，涵盖确权、全网监测及一键维权', url: 'https://www.whaleip.com/' },
-            { title: '维权骑士', description: '设计师首选的原创保护工具，专注于插画与图文防盗', url: 'https://rightknights.com/' }
+            { title: '维权骑士', description: '设计师首选的原创保护工具，专注于插画与图文防盗', url: 'https://rightknights.com/' },
+            { title: '中国裁判文书网', description: '官方判例查询，学习真实设计合同纠纷的处理结果', url: 'https://wenshu.court.gov.cn/' }
           ]
         },
         { 
@@ -857,7 +858,8 @@ const CATEGORIES = [
           iconConfig: { gradient: 'from-pink-600 to-orange-400',  iconName: 'file-text' },
           sites: [
             { title: '法天使', description: '提供极其专业的设计服务合同模板，条款严密防避坑', url: 'https://www.fatianshi.cn' },
-            { title: '法大大', description: '电子合同签署标杆，让设计师远程接单更具法律保障', url: 'https://www.fadada.com' }
+            { title: '法大大', description: '电子合同签署标杆，让设计师远程接单更具法律保障', url: 'https://www.fadada.com' },
+            { title: '12348中国法律服务', description: '司法部官方平台，提供免费的法律咨询与法律援助', url: 'http://www.12348.gov.cn' }
           ]
         }
       ],
