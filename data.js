@@ -54,13 +54,13 @@ const CATEGORIES = [
           name: '#日常必备', 
           iconConfig: { gradient: 'from-orange-500 to-red-500', iconName: 'star' },
           sites: [
-            {title: "花瓣", description: "设计师寻找灵感，采集保存可用素材", url: "https://hunban.com"},
-            {title: "站酷", description: "当前国内最具人气的设计师作品展示平台", url: "https://www.zcool.com.cn", },
-            {title: "优设", description: "设计行业优质文章设计资讯分享站点", url: "https://www.uisdc.com", },
-            {title: "Pinterest", description: "全球最大的创意灵感图片素材采集站", url: "https://www.pinterest.com"},
-            {title: "Dribbble.", description: "知名的面向设计师的社交网络平台", url: "https://dribbble.com/"},
-            {title: "Behance", description: "Addoe旗下的设计师作品展示交流平台", url: "https://behance.net/"},
-            {title: "Youtube", description: "全球最大的网络视频影片分享平台", url: "https://www.youtube.com", }
+            {title: "花瓣网", description: "国内版Pinterest，设计师寻找参考、建立灵感库必备", url: "https://hunban.com"},
+            {title: "站酷网", description: "设计师互动社区，不仅能展示作品，还有专业职场课", url: "https://www.zcool.com.cn", },
+            {title: "优设网", description: "国内人气最高的设计师学习站，提供海量教程与干货", url: "https://www.uisdc.com", },
+            {title: "Pinterest", description: "全球最大视觉灵感平台，通过图片流获取无限设计创意", url: "https://www.pinterest.com"},
+            {title: "Dribbble", description: "侧重UI/UX与动态设计，是全球顶尖设计师交流的主战场", url: "https://dribbble.com/"},
+            {title: "Behance", description: "Adobe旗下全球顶尖设计社区，涵盖全行业最高水准作品", url: "https://behance.net/"},
+            {title: "Youtube", description: "全球最大的网络视频影片分享平台，自媒体人聚集地", url: "https://www.youtube.com", }
           ]
         },
         { 
@@ -134,12 +134,27 @@ const CATEGORIES = [
             { title: '字形演变', description: '可以查看汉字的演变过程', url: 'https://www.fantiz5.com/zixing/' },
             { title: '字体传奇网', description: '分类收录各风格字体作品和素材', url: 'http://www.ziticq.com/Works' },
             { title: '字体江湖', description: '「字体帮」字体设计师刘兵克建立，会有很多字体设计师在此打卡练习', url: 'https://www.zitisheji.com' },
+            { title: 'The Type', description: '深度字体文化媒体，探讨文字设计背后的历史与技术细节', url: 'https://www.thetype.com/' },
             { title: 'CND设计网-字体灵感', description: 'CND设计网下的字体灵感搜索', url: 'http://ziti.cndesign.com/inspiration.html' }
           ]
         },
         { 
           id: 'B3', 
-          name: '#字体厂商', 
+          name: '#国际视野', 
+          iconConfig: { gradient: 'from-gray-600 to-gray-800', iconName: 'sparkles' },
+          sites: [
+            { title: 'Justfont Blog', description: '来自台湾的高质量字体博客，深入浅出讲解字形构造逻辑', url: 'https://blog.justfont.com/' },
+            { title: 'Glyphs', description: '行业标杆级的字体设计软件官网，社区内有大量专业教程', url: 'https://glyphsapp.com/zh/' },
+            { title: 'Typewolf', description: '网页排版圣经，专门收集互联网上最好看的字体组合案例', url: 'https://www.typewolf.com/' },
+            { title: 'It’s Nice That', description: '全球创意媒体，经常有极具实验性的先锋字体设计专题', url: 'https://www.itsnicethat.com/' },
+            { title: 'Fonts in Use', description: '独立的字体应用档案库，可以看到同一款字在不同场景的效果', url: 'https://fontsinuse.com/' },
+            { title: 'Typographica', description: '专业的字体评论网站，深度解析新发布的字库设计优劣', url: 'https://typographica.org/' },
+            { title: 'Adobe Fonts', description: '官方字体库，其配套的“排版趋势”报告极具指导意义', url: 'https://fonts.adobe.com/' }
+          ]
+        },
+        { 
+          id: 'B4', 
+          name: '#字库品牌', 
           iconConfig: { gradient: 'from-gray-600 to-gray-800', iconName: 'factory' },
           sites: [
             { title:'方正字库', description:'中国最早的中文字库开发厂商，源于北大“汉字处理系统”',url:'https://www.foundertype.com/ '},
@@ -161,7 +176,7 @@ const CATEGORIES = [
           ]
         },
         { 
-          id: 'B4', 
+          id: 'B5', 
           name: '#字体工具', 
           iconConfig: { gradient: 'from-gray-600 to-gray-800', iconName: 'case-lower' },
           sites: [
@@ -177,7 +192,7 @@ const CATEGORIES = [
           ]
         },
         { 
-          id: 'B5', 
+          id: 'B6', 
           name: '#字体动效', 
           iconConfig: { gradient: 'from-gray-600 to-gray-800', iconName: 'clapperboard' },
           sites: [
@@ -257,34 +272,38 @@ const CATEGORIES = [
           name: '#AI对话', 
           iconConfig: { gradient: 'from-violet-500 to-purple-600', iconName: 'bot-message-square' },
           sites: [
-            { title:'Deekseek', description:'全球领先的国产推理性“AI助手”',url:'https://chat.deepseek.com/ '},
-            { title:'腾讯元宝', description:'腾讯混元大模型，并有Deekseek R1加持，对微信超强兼容功能强大',url:'https://yuanbao.tencent.com/chat/naQivTmsDa '},
+            { title:'Deekseek', description:'国产之光，数学、编程、逻辑能力全球顶尖且免费',url:'https://chat.deepseek.com/ '},
+            { title:'豆包', description:'字节跳动出品，日活极高，语音交互自然，预装智能体多',url:'https://www.doubao.com '},
+            { title:'千问', description:'阿里研发，综合能力均衡，办公和企业级应用接入广',url:'https://www.qianwen.com/ '},
+            { title:'灵光AI', description:'蚂蚁集团出品，首创“闪应用”，一句话30秒手搓App',url:'https://lingguang.com'},
+            { title:'腾讯元宝', description:'腾讯混元大模型Deekseek加持，对微信超强兼容',url:'https://yuanbao.tencent.com'},
             { title: 'AskManyAI', description: '来自全球的超多AI工具集合站，体验甚至超过原平台', url: 'https://www.dazi.co/' },
             { title: '问小白AI', description: '如果经常受到DeepSeek服务器繁忙，可以试试这个', url: 'https://www.wenxiaobai.com' },
-            { title:'ChatGPT', description:'OpenAI的研发的知名AI聊天助手',url:'https://chatgpt.com/ '},
+            { title:'ChatGPT', description:'AI领域领军者，多模态交互最强，智能化程度极高',url:'https://chatgpt.com/ '},
             { title:'Gemini', description:'谷歌研发的人工智能对话模型',url:'https://gemini.google.com/app '},
-            { title:'Kimi Chat', description:'智能聊天+超长文本处理',url:'https://kimi.moonshot.cn/ '},
-            { title:'NotionAI', description:'国内版ChatGPT智能聊天机器人',url:'http://chatyy.nbmzdl.cn/?hometype=chat '},
-            { title:'豆包', description:'字节跳动旗下通用性AI大模型',url:'https://www.doubao.com '},
+            { title:'Kimi Chat', description:'主打超长上下文，擅长阅读长论文、搜集整理海量资料',url:'https://kimi.moonshot.cn/ '},
             { title:'讯飞星火', description:'综合性AI 智能聊天+生图+PPT...',url:'https://xinghuo.xfyun.cn/desk '},
-            { title:'通义千问', description:'阿里出品！AI聊天+智能生图+视频摘要',url:'https://tongyi.aliyun.com/qianwen/ '},
-            { title:'秘塔AI', description:'AI智能分析文案生成',url:'https://metaso.cn/?s=bdpc '}
+            { title:'文心一言', description:'百度研发，知识覆盖面广，拥有庞大的百度生态链'},
+            { title:'智谱清言', description:'清华系背景，插件系统丰富，支持长文档及代码执行',url:'https://chatglm.cn'}
           ]
         },
         { 
           id: 'D2', 
-          name: '#AI绘画', 
+          name: '#AI图片', 
           iconConfig: { gradient: 'from-violet-500 to-purple-600', iconName: 'palette' },
           sites: [
             { title:'Stable Diffusion', description:'开源AI图像生成工具”',url:'https://stability.ai/ '},
-            { title:'DALL-E', description:'OpenAI的AI图像生成工具',url:'https://www.dall-e.com/ '},
-            { title:'即梦AI', description:'图片转视频的智能创作平台',url:'https://jimeng.jianying.com/ '},
-            { title:'哩布哩布AI', description:'国产人气AI生图大模型社区',url:'https://www.liblib.art/ '},
-            { title:'通义万相', description:'阿里云旗下的智能生图平台',url:'https://tongyi.aliyun.com/wanxiang/ '},
+            { title:'DALL-E', description:'OpenAI出品，逻辑理解最强，支持精准的文字嵌入',url:'https://www.dall-e.com/ '},
+            { title:'即梦AI', description:'字节跳动出品，文生图、图生图，每日有固定的免费额度',url:'https://jimeng.jianying.com/ '},
+            { title:'Liblib AI', description:'国内领先的模型库社区，拥有海量精细化LoRA模型',url:'https://www.liblib.art/ '},
+            { title:'无界 AI', description:'算力强大，模型风格极多，适合二次元及插画创作',url:'https://wujieai.com'},
+            { title:'堆友', description:'阿里设计师平台，主打3D素材、头像及电商海报生成',url:'https://duiyou.com '},
+            { title:'通义万相', description:'阿里旗下，涵盖文生图、虚拟模特，商业设计效率高',url:'https://tongyi.aliyun.com/wanxiang/ '},
             { title:'佐糖AI', description:'图片修复+在线抠图+背景合成',url:'https://picwish.cn/create '},
+            { title:'稿定 AI', description:'侧重电商设计，提供AI模特、商品图替换等实操功能',url:'https://gaoding.com'},
+            { title:'创客贴 AI', description:'集成绘图与平面设计，适合小白制作海报、社交配图',url:'https://chuangkit.com'},
             { title:'Gamma', description:'AI制作PPT 一秒生成',url:'https://gamma.app/ '},
-            { title:'Vega AI', description:'在线免费AI插画创作平台',url:'https://applet.rightbrainai.cn/ '},
-            { title:'神采AI', description:'AIGC艺术生成平台，可以从草图、照片或文本中生成图像、视频和动画等形式',url:'https://www.ishencai.com/ '}
+            { title:'Vega AI', description:'在线免费AI插画创作平台',url:'https://applet.rightbrainai.cn/ '}
           ]
         },
         { 
@@ -292,7 +311,13 @@ const CATEGORIES = [
           name: '#AI视频', 
           iconConfig: { gradient: 'from-violet-500 to-purple-600', iconName: 'video' },
           sites: [
-            { title: '度加', description: 'AI生成视频文案和匹配视频', url: 'https://aigc.baidu.com/home' }
+            { title: '可灵AI', description: '快手出品，支持2分钟长视频，物理特性极其真实', url: 'https://klingai.com' },
+            { title: '即梦 AI', description: '字节跳动出品，与剪映深度集成，运镜控制非常灵活', url: 'https://jimeng.douyin.com' },
+            { title: '海螺 AI', description: 'MiniMax旗下，人像表情自然，动作流畅度行业领先', url: 'https://hailuoai.com' },
+            { title: 'Vidu', description: '生数科技研发，国产Sora级模型，支持复杂的一致性生成', url: 'https://vidu.cn' },
+            { title: '智谱清影', description: '智谱AI出品，生成速度快，国产开源生态的核心力量', url: 'https://chatglm.cn' },
+            { title:'神采AI', description:'AIGC艺术生成平台，可以从草图、照片或文本中生成图像、视频和动画等形式',url:'https://www.ishencai.com/ '},
+            { title:'腾讯智影', description:'腾讯旗下，集成数字人、文本配音、自动字幕等全流程',url:'https://zenvideo.qq.com'}
           ]
         },
         { 
@@ -300,9 +325,15 @@ const CATEGORIES = [
           name: '#AI音频', 
           iconConfig: { gradient: 'from-violet-500 to-purple-600', iconName: 'audio-waveform' },
           sites: [
-            { title: '天工AI', description: 'AI智能音乐+AI智能生图', url: 'https://xinghuo.xfyun.cn/desk' }
+            { title: '网易天音', description: '针对词曲编全流程，适合零基础用户创作流行音乐', url: 'https://tianyin.music.163.com' },
+            { title: 'Fish Audio', description: '顶级开源声音克隆，支持高保真音色转换和配音', url: 'https://fish.audio' },
+            { title: 'GPT-SoVITS', description: '国内最火的开源TTS，能实现极高相似度的人声模仿', url: 'https://github.com/RVC-Boss' },
+            { title: 'Suno', description: '全球最强AI作词作曲，支持多语种演唱，质感极佳', url: 'https://suno.com	' },
+            { title: 'Udio', description: '专注于高音质和音乐性，人声表现力比Suno更具张力', url: 'https://udio.com' },
+            { title: 'ElevenLabs', description: '国际最强配音工具，情绪调节精准，多国口音真实', url: 'https://elevenlabs.io' },
+            { title: 'AIVA', description: '老牌AI作曲平台，提供MIDI编辑，适合影视配乐创作', url: 'https://aiva.ai' }
           ]
-        }
+        } 
       ],
     },
     {
@@ -315,10 +346,11 @@ const CATEGORIES = [
           name: '#免版权中文字体', 
           iconConfig: { gradient: 'from-emerald-400 to-teal-600', iconName: 'type' },
           sites: [
-            { title:'字体天下', description:'网站汇集超多字体，部分免商可下载',url:'https://www.fonts.net.cn/ '},
-            { title:'字体搬运工', description:'整理收集来自全网的免商用字体',url:'https://font.sucai999.com/ '},
-            { title:'猫啃网', description:'专注于免商用中文字体下载',url:'https://www.maoken.com/ '},
-            { title:'100Font', description:'专门整理收集免商用字体的网站',url:'https://www.100font.com/ '}
+            { title:'字体天下', description:'资源极多，设有专门的“免版税商用”分类标签',url:'https://www.fonts.net.cn/ '},
+            { title:'字体搬运工', description:'整理收集来自全网的免费商用字体推荐',url:'https://font.sucai999.com/ '},
+            { title:'猫啃网', description:'国内最专业的免费商用字体收集站，分类详尽且更新快',url:'https://www.maoken.com/ '},
+            { title:'100Font', description:'专门整理收集免商用字体的网站',url:'https://www.100font.com/ '},
+            { title:'自由字体', description:'提供清晰的授权协议说明，支持在线预览和一键下载',url:'https://ziyouziti.com'}
           ]
         },
         { 
@@ -382,7 +414,7 @@ const CATEGORIES = [
         },
         { 
           id: 'E5', 
-          name: '#免版权音频', 
+          name: '#免版权音乐', 
           iconConfig: { gradient: 'from-emerald-400 to-teal-600', iconName: 'music-2' },
           sites: [
             { title:'Dova-s', description:'提供超过上万首免费音乐素材',url:'https://dova-s.jp/ '},
@@ -399,7 +431,17 @@ const CATEGORIES = [
           name: '#免版权音效', 
           iconConfig: { gradient: 'from-emerald-400 to-teal-600', iconName: 'volume-2' },
           sites: [
-             { title:'Tam-music', description:'免费提供分类详细的音乐音效素材',url:'https://www.tam-music.com/ '}
+             { title:'爱给网', description:'国内最大的素材库，音效分类极细，大部分支持免费商用',url:'https://www.aigei.com/sound/class/'},
+             { title:'耳聆网', description:'专业的音频分享社区，以实地录制音效为主，完全免费',url:'https://www.ear0.com/ '},
+             { title:'淘声网', description:'全球声音搜索引擎，聚合国内外数百万素材，支持中文搜索',url:'https://www.tosound.com/'},
+             { title:'站长素材 (音效分栏)', description:'老牌素材站，适合快速找转场、提示音等短小音效',url:'https://sc.chinaz.com/yinxiao/'},
+             { title:'熊猫办公 (音效)', description:'包含大量短视频及营销常用音效，需注意部分需VIP',url:'https://www.tukuppt.com/yinxiao/'},
+             { title:'Freesound', description:'全球最大开源声音库，完全靠社区贡献，涵盖各种冷门音效',url:'https://freesound.org '},
+             { title:'Mixkit', description:'界面现代，提供大量高清、免注册下载的影视级音效',url:'https://mixkit.co'},
+             { title:'Pixabay Sound', description:'综合素材大站，所有音频均可免费商用，无需署名',url:'https://pixabay.com'},
+             { title:'BBC Sound Effects', description:'开放了3万多个BBC馆藏级音效，非商业用途完全免费',url:'https://sound-effects.bbcrewind.co.uk '},
+             { title:'Zapsplat', description:'拥有十万级专业音效，更新极快，是很多剪辑师的首选',url:'https://zapsplat.com '},
+             { title:'SoundBible', description:'资源虽少但精，专注于提供高清晰度的WAV格式原生素材',url:'https://soundbible.com'}
           ]
         }
       ],
@@ -695,17 +737,30 @@ const CATEGORIES = [
     },
     {
       id: 'I',
-      name: '设计学习',
+      name: '知识社区',
       icon: 'graduation-cap',
       subCategories: [
         { 
           id: 'I1', 
-          name: '设计书籍', 
+          name: '#设计学习', 
+          iconConfig: { gradient: 'from-cyan-500 to-blue-600', iconName: 'graduation-cap' },
+          sites: [
+             { title: 'Liblib 教程区', description: '国内最大的AI模型社区，有详尽的Stable Diffusion教程', url: 'https://www.liblib.art/teaching' },
+             { title: '优设网 (UISDC)', description: '国内人气最高的设计师学习站，提供海量教程与干货', url: 'https://uisdc.com' },
+             { title: '翼狐网', description: '侧重数字艺术，涵盖插画、原画、三维软件的高质量课', url: 'https://yiihuu.com' },
+             { title: '中国大学MOOC', description: '汇聚各大美院及高校名师课，适合系统学习设计理论', url: 'https://www.icourse163.org/' },
+             { title: 'Figma Learn', description: '官方学习中心，是现代 UI/UX 设计师进阶的必经之路', url: 'https://help.figma.com/hc/en-us' }
+          ]
+        },
+        { 
+          id: 'I2', 
+          name: '#设计书籍', 
           iconConfig: { gradient: 'from-cyan-500 to-blue-600', iconName: 'book-open' },
           sites: [
              { title: '千本设计书籍', description: '搜集来自全球的知名设计书籍-设计师必备推荐', url: 'https://mp.weixin.qq.com/s/6A9ef-6Ik6Y7OebwuOGFDw' }
           ]
         }
+
       ],
     },
     {
