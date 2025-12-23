@@ -54,7 +54,7 @@ const CATEGORIES = [
           name: '#日常必备', 
           iconConfig: { gradient: 'from-orange-500 to-red-500', iconName: 'star' },
           sites: [
-            {title: "花瓣网", description: "国内版Pinterest，设计师寻找参考、建立灵感库必备", url: "https://hunban.com"},
+            {title: "花瓣网", description: "国内版Pinterest，设计师寻找参考、建立灵感库必备", url: "https://hunban.com",isFeatured: true,},
             {title: "站酷网", description: "设计师互动社区，不仅能展示作品，还有专业职场课", url: "https://www.zcool.com.cn", },
             {title: "优设网", description: "国内人气最高的设计师学习站，提供海量教程与干货", url: "https://www.uisdc.com", },
             {title: "Pinterest", description: "全球最大视觉灵感平台，通过图片流获取无限设计创意", url: "https://www.pinterest.com"},
@@ -847,6 +847,7 @@ const CATEGORIES = [
           sites: [
             { title: '中国版权保护中心', description: '国家级权威机构，美术作品登记300元/件起', url: 'https://www.ccopyright.com.cn' },
             { title: '可信时间戳 (TSA)', description: '国家授时中心支持，为电子作品提供秒级确权法律证明', url: 'https://www.tsa.cn/' },
+            { title: '登记作品查询', description: '公示全国已登记版权作品信息，可供搜索查询', url: 'http://qgzpdj.ccopyright.com.cn' },
             { title: '鲸版权', description: '智能版权管理平台，涵盖确权、全网监测及一键维权', url: 'https://www.whaleip.com/' },
             { title: '维权骑士', description: '设计师首选的原创保护工具，专注于插画与图文防盗', url: 'https://rightknights.com/' },
             { title: '中国裁判文书网', description: '官方判例查询，学习真实设计合同纠纷的处理结果', url: 'https://wenshu.court.gov.cn/' }
