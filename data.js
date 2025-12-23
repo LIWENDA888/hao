@@ -205,64 +205,6 @@ const CATEGORIES = [
       ],
     },
     {
-      id: 'C',
-      name: '版式灵感',
-      icon: 'sparkles',
-      subCategories: [
-        { 
-          id: 'C1', 
-          name: '#版式设计', 
-          iconConfig: { gradient: 'from-pink-500 to-rose-600', iconName: 'layout-template' },
-          sites: [
-            { title: 'Typeroom', description: '字体排版设计前沿网站', url: 'https://www.typeroom.eu/' },
-            { title: 'Typographicposters', description: '专注于文字排版和抽象图形类的海报设计网站', url: 'https://www.typographicposters.com/archive' },
-            { title: 'Labor-atories', description: '日本书籍封面设计', url: 'http://labor-atories.com/works/' },
-            { title: 'Dieline', description: '全球最受欢迎包装设计博客', url: 'https://thedieline.com/' },
-            { title: 'Marble.co', description: '可爱活泼风～平面设计案例', url: 'https://www.marble-co.net/portfolio' },
-            { title: 'Niklasalm', description: '最佳网站设计奖项和灵感', url: 'https://www.niklasalm.se' },
-            { title: 'Awwwards', description: '优秀的创意合成图片与视频社区', url: 'https://www.awwwards.com/' },
-            { title: 'Designspiration', description: '差不多算是美国版花瓣网', url: 'https://www.designspiration.com/' },
-            { title: 'Fonts in Use', description: '字体的美与价值～8000条商用实例', url: 'https://fontsinuse.com/' },
-            { title: 'Art of Menu', description: '来自各地看不完的优美菜单设计', url: 'https://www.underconsideration.com/artofthemenu/' }
-          ]
-        },
-        { 
-          id: 'C2', 
-          name: '#品牌VI', 
-          iconConfig: { gradient: 'from-pink-500 to-rose-600', iconName: 'badge-check' },
-          sites: [
-            { title:'Abdudo', description:'每日分享高品质设计创意灵感',url:'https://abduzeedo.com/ '},
-            { title:'Trend List', description:'一位大牛眼中的平面设计之美',url:'https://www.trendlist.org/ '},
-            { title:'BrandGuidelines', description:'分享来自全球各地的品牌VI案例',url:'https://www.brandguidelines.net/ '},
-            { title:'Inspiration Grid', description:'来自全球新奇的品牌创意案例',url:'https://theinspirationgrid.com/ '}
-          ]
-        },
-        { 
-          id: 'C3', 
-          name: '#LOGO设计', 
-          iconConfig: { gradient: 'from-pink-500 to-rose-600', iconName: 'shapes' },
-          sites: [
-            { title:'Logostock', description:'一个日本logo设计社区',url:'http://logostock.jp '},
-            { title:'Worldvectorlogo', description:'免费下载各种品牌logo',url:'https://worldvectorlogo.com '},
-            { title:'LogoMoose', description:'一个logo灵感和设计社区',url:'https://www.logomoose.com '},
-            { title:'Logopond', description:'国外优秀logo灵感社区',url:'https://logopond.com '}
-          ]
-        },
-        { 
-          id: 'C4', 
-          name: '#摄影鉴赏', 
-          iconConfig: { gradient: 'from-pink-500 to-rose-600', iconName: 'aperture' },
-          sites: [
-            { title:'CNU', description:'高质量摄影社区',url:'http://www.cnu.cc/ '},
-            { title:'色影无忌', description:'中国影像生活门户',url:'https://vision.xitek.com/sight/ '},
-            { title:'Designspiration', description:'提供设计灵感、插画摄影、时尚艺术',url:'https://www.designspiration.com/ '},
-            { title:'Photock', description:'8000+免版权摄影图片',url:'https://photock.jp '},
-            { title:'Foodies Feed', description:'秀色可餐！免费高清食物照片',url:'https://www.foodiesfeed.com/ '}
-          ]
-        }
-      ],
-    },
-    {
       id: 'D',
       name: 'AI工具',
       icon: 'bot',
@@ -443,6 +385,64 @@ const CATEGORIES = [
              { title:'BBC Sound Effects', description:'开放了3万多个BBC馆藏级音效，非商业用途完全免费',url:'https://sound-effects.bbcrewind.co.uk '},
              { title:'Zapsplat', description:'拥有十万级专业音效，更新极快，是很多剪辑师的首选',url:'https://zapsplat.com '},
              { title:'SoundBible', description:'资源虽少但精，专注于提供高清晰度的WAV格式原生素材',url:'https://soundbible.com'}
+          ]
+        }
+      ],
+    },
+    {
+      id: 'C',
+      name: '设计灵感',
+      icon: 'sparkles',
+      subCategories: [
+        { 
+          id: 'C1', 
+          name: '#版式设计', 
+          iconConfig: { gradient: 'from-pink-500 to-rose-600', iconName: 'layout-template' },
+          sites: [
+            { title: 'Typeroom', description: '字体排版设计前沿网站', url: 'https://www.typeroom.eu/' },
+            { title: 'Typographicposters', description: '专注于文字排版和抽象图形类的海报设计网站', url: 'https://www.typographicposters.com/archive' },
+            { title: 'Labor-atories', description: '日本书籍封面设计', url: 'http://labor-atories.com/works/' },
+            { title: 'Dieline', description: '全球最受欢迎包装设计博客', url: 'https://thedieline.com/' },
+            { title: 'Marble.co', description: '可爱活泼风～平面设计案例', url: 'https://www.marble-co.net/portfolio' },
+            { title: 'Niklasalm', description: '最佳网站设计奖项和灵感', url: 'https://www.niklasalm.se' },
+            { title: 'Awwwards', description: '优秀的创意合成图片与视频社区', url: 'https://www.awwwards.com/' },
+            { title: 'Designspiration', description: '差不多算是美国版花瓣网', url: 'https://www.designspiration.com/' },
+            { title: 'Fonts in Use', description: '字体的美与价值～8000条商用实例', url: 'https://fontsinuse.com/' },
+            { title: 'Art of Menu', description: '来自各地看不完的优美菜单设计', url: 'https://www.underconsideration.com/artofthemenu/' }
+          ]
+        },
+        { 
+          id: 'C2', 
+          name: '#品牌VI', 
+          iconConfig: { gradient: 'from-pink-500 to-rose-600', iconName: 'badge-check' },
+          sites: [
+            { title:'Abdudo', description:'每日分享高品质设计创意灵感',url:'https://abduzeedo.com/ '},
+            { title:'Trend List', description:'一位大牛眼中的平面设计之美',url:'https://www.trendlist.org/ '},
+            { title:'BrandGuidelines', description:'分享来自全球各地的品牌VI案例',url:'https://www.brandguidelines.net/ '},
+            { title:'Inspiration Grid', description:'来自全球新奇的品牌创意案例',url:'https://theinspirationgrid.com/ '}
+          ]
+        },
+        { 
+          id: 'C3', 
+          name: '#LOGO设计', 
+          iconConfig: { gradient: 'from-pink-500 to-rose-600', iconName: 'shapes' },
+          sites: [
+            { title:'Logostock', description:'一个日本logo设计社区',url:'http://logostock.jp '},
+            { title:'Worldvectorlogo', description:'免费下载各种品牌logo',url:'https://worldvectorlogo.com '},
+            { title:'LogoMoose', description:'一个logo灵感和设计社区',url:'https://www.logomoose.com '},
+            { title:'Logopond', description:'国外优秀logo灵感社区',url:'https://logopond.com '}
+          ]
+        },
+        { 
+          id: 'C4', 
+          name: '#摄影鉴赏', 
+          iconConfig: { gradient: 'from-pink-500 to-rose-600', iconName: 'aperture' },
+          sites: [
+            { title:'CNU', description:'高质量摄影社区',url:'http://www.cnu.cc/ '},
+            { title:'色影无忌', description:'中国影像生活门户',url:'https://vision.xitek.com/sight/ '},
+            { title:'Designspiration', description:'提供设计灵感、插画摄影、时尚艺术',url:'https://www.designspiration.com/ '},
+            { title:'Photock', description:'8000+免版权摄影图片',url:'https://photock.jp '},
+            { title:'Foodies Feed', description:'秀色可餐！免费高清食物照片',url:'https://www.foodiesfeed.com/ '}
           ]
         }
       ],
@@ -701,7 +701,7 @@ const CATEGORIES = [
     },
     {
       id: 'H',
-      name: '配色方案',
+      name: '设计配色',
       icon: 'palette',
       subCategories: [
         { 
@@ -738,12 +738,12 @@ const CATEGORIES = [
     },
     {
       id: 'I',
-      name: '知识社区',
+      name: '设计学习',
       icon: 'graduation-cap',
       subCategories: [
         { 
           id: 'I1', 
-          name: '#设计学习', 
+          name: '#知识教程', 
           iconConfig: { gradient: 'from-cyan-500 to-blue-600', iconName: 'graduation-cap' },
           sites: [
              { title: 'Liblib 教程区', description: '国内最大的AI模型社区，有详尽的Stable Diffusion教程', url: 'https://www.liblib.art/teaching' },
@@ -761,16 +761,111 @@ const CATEGORIES = [
              { title: '千本设计书籍', description: '搜集来自全球的知名设计书籍-设计师必备推荐', url: 'https://mp.weixin.qq.com/s/6A9ef-6Ik6Y7OebwuOGFDw' }
           ]
         }
-
       ],
     },
     {
       id: 'J',
+      name: '设计资讯',
+      icon: 'graduation-cap',
+      subCategories: [
+        { 
+          id: 'J1', 
+          name: '#设计新闻', 
+          iconConfig: { gradient: 'from-pink-400 to-cyan-600', iconName: 'newspaper' },
+          sites: [
+             { title: '优设网 (UISDC)', description: '国内人气最高的设计师学习站，提供海量教程与干货', url: 'https://www.uisdc.com/' },
+             { title: '站酷资讯', description: '基于站酷社区，提供最贴近国内设计师职场的深度干货', url: 'https://www.zcool.com.cn/specials/news' },
+             { title: '数英网 (UISDC)', description: '营销设计界风向标，展示国内最高水平的商业创意资讯', url: 'https://www.digitaling.com/' },
+             { title: '设计达人', description: '精选全球优秀UI设计和网页设计欣赏，分享免费高质量设计素材', url: 'https://www.shejidaren.com/' },
+             { title: 'SocialBeta', description: '侧重品牌数字化与社交设计趋势，提供专业行业报告', url: 'https://socialbeta.com/' }
+          ]
+        },
+        { 
+          id: 'J2', 
+          name: '#设计赛事', 
+          iconConfig: { gradient: 'from-pink-400 to-cyan-600',  iconName: 'trophy' },
+          sites: [
+             { title: '站酷赛事', description: '基于站酷社区，提供便捷的在线报名与作品展示', url: 'https://www.zcool.com.cn/events/eventlist' },
+             { title: '设计竞赛网', description: '国内最全的设计大赛聚合站，涵盖建筑、插画、工业', url: 'https://www.shejijingsai.com/' },
+             { title: '方正奖字体设计大赛', description: '目前国内规格最高、覆盖面最广的字体设计赛事之一', url: 'https://ztds.foundertype.com/' },
+             { title: '汉仪字体之星', description: '汉仪字库主办,以探索发掘优秀字体作品为导向的专业竞赛', url: 'https://www.fontstar.com.cn/home' }
+          ]
+        },
+        { 
+          id: 'J3', 
+          name: '#版权登记', 
+          iconConfig: { gradient: 'from-pink-400 to-cyan-600',  iconName: 'copyright' },
+          sites: [
+              // --- 国家级及直辖市 ---
+              { title: '中国版权保护中心', description: '国家级权威机构，美术作品登记300元/件起', url: 'https://www.ccopyright.com.cn' },
+             { title: '北京版权登记', description: '在线免费办理，搜索“作品自愿登记”', url: 'https://banshi.beijing.gov.cn' },
+             { title: '上海版权登记', description: '通过“一网通办”实名认证，在线免费办理', url: 'https://zwdt.sh.gov.cn' },
+             { title: '天津版权登记', description: '天津市作品著作权登记系统，在线免费办理', url: 'http://www.tjsbqxh.org.cn' },
+             { title: '重庆版权登记', description: '在线免费办理，支持在线领证，30天内办结', url: 'https://cqca.com.cn' },
+             // --- 华东地区 ---
+             { title: '江苏版权登记', description: '在线免费办理，认证后进入著作权登记系统', url: 'https://jscopyright.cn' },
+             { title: '浙江版权登记', description: '在线办理需“浙里办”认证，收费150元/件', url: 'http://www.zjbanquan.org' },
+             { title: '安徽版权登记', description: '安徽版权在线数字服务平台，在线免费办理', url: 'https://bqzx.ahcaee.com' },
+             { title: '福建版权登记', description: '福建省作品自愿登记系统，在线免费办理', url: 'http://copyright.fjxuanchuan.cn' },
+             { title: '江西版权登记', description: '江西版权保护中心，在线免费办理并领证', url: 'http://jxbqbh.com' },
+             { title: '山东版权登记', description: '在线免费办理，实名认证后进入作品登记', url: 'https://sdszpdj.com' },
+             // --- 华中地区 ---
+             { title: '湖北版权登记', description: '湖北省版权登记平台，在线免费办理', url: 'http://www.ccct.net.cn' },
+             { title: '湖南版权登记', description: '通过省政务服务网办理，在线免费申报', url: 'https://hunan.gov.cn' },
+             { title: '河南版权登记', description: '通过河南法律服务网办理，在线免费申报', url: 'https://ha.12348.gov.cn' },
+             // --- 华南地区 ---
+             { title: '广东版权登记', description: '广东省版权登记系统，收费150元/件', url: 'http://www.gd-copyright.cn' },
+             { title: '广西版权登记', description: '在线免费办理，需经三阶段审核', url: 'https://gxbq.gxbgsx.com' },
+             { title: '海南版权登记', description: '在线免费办理，办结时限约为20个工作日', url: 'https://wssp.hainan.gov.cn' },
+             // --- 华北地区 ---
+             { title: '河北版权登记', description: '河北省版权服务平台，在线免费办理', url: 'https://www.hebeibanquan.com.cn' },
+             { title: '山西版权登记', description: '通过省人民政府办事大厅进行在线申报', url: 'http://www.shanxi.gov.cn' },
+             { title: '内蒙古版权登记', description: '由内蒙古知识产权服务中心承办线上登记', url: 'http://www.nmcpo.com' },
+             // --- 东北地区 ---
+             { title: '辽宁版权登记', description: '辽宁省数字化版权管理服务系统，在线办理', url: 'https://dcms.nncec.com' },
+             { title: '吉林版权登记', description: '吉林省版权局官方办理，在线免费登记', url: 'http://jl.gov.cn' },
+             { title: '黑龙江版权登记', description: '通过省政务服务网实名认证后在线办理', url: 'https://www.zwfw.hlj.gov.cn' },
+             // --- 西北地区 ---
+             { title: '陕西版权登记', description: '陕西省版权登记平台，在线免费办理', url: 'https://www.sxxc.gov.cn' },
+             { title: '甘肃版权登记', description: '支持平台或公众号在线申报，办结约30天', url: 'https://gsbqfw.com' },
+             { title: '宁夏版权登记', description: '宁夏政务服务网办理，办结约30个工作日', url: 'https://zwfw.nx.gov.cn' },
+             { title: '青海版权登记', description: '青海省版权局作品登记系统，在线免费办理', url: 'https://qh.gov.cn' },
+             { title: '新疆版权登记', description: '新疆政务服务网办理，搜索作品自愿登记', url: 'https://zwfw.xinjiang.gov.cn' },
+             // --- 西南地区 ---
+             { title: '四川版权登记', description: '四川省版权局官方办理，建议先看登记指南', url: 'https://sc-copyright.org' },
+             { title: '贵州版权登记', description: '收费50元/次，省内民族民间文化作品免费', url: 'https://gzbqdj.com' },
+             { title: '云南版权登记', description: '云南版权网，在线免费办理，时限约30天', url: 'http://www.ynbq.gov.cn' },
+             { title: '西藏版权登记', description: '西藏自治区版权局官方办理，支持在线登记', url: 'https://xz.gov.cn' }
+          ]
+        },
+        { 
+          id: 'J4', 
+          name: '#维权保护', 
+          iconConfig: { gradient: 'from-pink-400 to-cyan-600',  iconName: 'shield-check' },
+          sites: [
+            { title: '可信时间戳 (TSA)', description: '国家授时中心支持，为电子作品提供秒级确权法律证明', url: 'https://www.tsa.cn/' },
+            { title: '鲸版权', description: '智能版权管理平台，涵盖确权、全网监测及一键维权', url: 'https://www.whaleip.com/' },
+            { title: '维权骑士', description: '设计师首选的原创保护工具，专注于插画与图文防盗', url: 'https://rightknights.com/' }
+          ]
+        },
+        { 
+          id: 'J5', 
+          name: '#商业合同', 
+          iconConfig: { gradient: 'from-pink-400 to-cyan-600',  iconName: 'file-text' },
+          sites: [
+            { title: '法天使', description: '提供极其专业的设计服务合同模板，条款严密防避坑', url: 'https://www.fatianshi.cn' },
+            { title: '法大大', description: '电子合同签署标杆，让设计师远程接单更具法律保障', url: 'https://www.fadada.com' }
+          ]
+        },
+      ],
+    },
+    {
+      id: 'K',
       name: '软件工具',
       icon: 'laptop',
       subCategories: [
         { 
-          id: 'J1', 
+          id: 'K1', 
           name: '#软件下载', 
           iconConfig: { gradient: 'from-slate-500 to-gray-600', iconName: 'hard-drive-download' },
           sites: [
@@ -785,7 +880,7 @@ const CATEGORIES = [
           ]
         },
         { 
-          id: 'J2', 
+          id: 'K2', 
           name: '#资源搜索', 
           iconConfig: { gradient: 'from-slate-500 to-gray-600', iconName: 'search-code' },
           sites: [
@@ -796,7 +891,7 @@ const CATEGORIES = [
           ]
         },
         { 
-          id: 'J3', 
+          id: 'K3', 
           name: '#格式转换', 
           iconConfig: { gradient: 'from-slate-500 to-gray-600', iconName: 'refresh-ccw' },
           sites: [
@@ -810,7 +905,7 @@ const CATEGORIES = [
           ]
         },
         { 
-          id: 'J4', 
+          id: 'K4', 
           name: '#偏门利器', 
           iconConfig: { gradient: 'from-slate-500 to-gray-600', iconName: 'settings' },
           sites: [
