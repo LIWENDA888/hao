@@ -275,16 +275,17 @@ const CATEGORIES = [
             { title:'Deekseek', description:'国产之光，数学、编程、逻辑能力全球顶尖且免费',url:'https://chat.deepseek.com/ '},
             { title:'豆包', description:'字节跳动出品，日活极高，语音交互自然，预装智能体多',url:'https://www.doubao.com '},
             { title:'千问', description:'阿里研发，综合能力均衡，办公和企业级应用接入广',url:'https://www.qianwen.com/ '},
-            { title:'灵光AI', description:'蚂蚁集团出品，首创“闪应用”，一句话30秒手搓App',url:'https://lingguang.com'},
+            { title:'灵光', description:'蚂蚁集团出品，首创“闪应用”，一句话30秒手搓App',url:'https://lingguang.com'},
             { title:'腾讯元宝', description:'腾讯混元大模型Deekseek加持，对微信超强兼容',url:'https://yuanbao.tencent.com'},
-            { title: 'AskManyAI', description: '来自全球的超多AI工具集合站，体验甚至超过原平台', url: 'https://www.dazi.co/' },
-            { title: '问小白AI', description: '如果经常受到DeepSeek服务器繁忙，可以试试这个', url: 'https://www.wenxiaobai.com' },
-            { title:'ChatGPT', description:'AI领域领军者，多模态交互最强，智能化程度极高',url:'https://chatgpt.com/ '},
-            { title:'Gemini', description:'谷歌研发的人工智能对话模型',url:'https://gemini.google.com/app '},
             { title:'Kimi Chat', description:'主打超长上下文，擅长阅读长论文、搜集整理海量资料',url:'https://kimi.moonshot.cn/ '},
             { title:'讯飞星火', description:'综合性AI 智能聊天+生图+PPT...',url:'https://xinghuo.xfyun.cn/desk '},
             { title:'文心一言', description:'百度研发，知识覆盖面广，拥有庞大的百度生态链'},
-            { title:'智谱清言', description:'清华系背景，插件系统丰富，支持长文档及代码执行',url:'https://chatglm.cn'}
+            { title:'智谱清言', description:'清华系背景，插件系统丰富，支持长文档及代码执行',url:'https://chatglm.cn'},
+            { title: 'AskManyAI', description: '来自全球的超多AI工具集合站，体验甚至超过原平台', url: 'https://www.dazi.co/' },
+            { title: '问小白AI', description: '如果经常受到DeepSeek服务器繁忙，可以试试这个', url: 'https://www.wenxiaobai.com' },
+            { title:'ChatGPT', description:'AI领域领军者，多模态交互最强，智能化程度极高',url:'https://chatgpt.com/ '},
+            { title:'Gemini', description:'谷歌研发的人工智能对话模型',url:'https://gemini.google.com/app '}
+           
           ]
         },
         { 
@@ -292,8 +293,6 @@ const CATEGORIES = [
           name: '#AI图片', 
           iconConfig: { gradient: 'from-violet-500 to-purple-600', iconName: 'palette' },
           sites: [
-            { title:'Stable Diffusion', description:'开源AI图像生成工具”',url:'https://stability.ai/ '},
-            { title:'DALL-E', description:'OpenAI出品，逻辑理解最强，支持精准的文字嵌入',url:'https://www.dall-e.com/ '},
             { title:'即梦AI', description:'字节跳动出品，文生图、图生图，每日有固定的免费额度',url:'https://jimeng.jianying.com/ '},
             { title:'Liblib AI', description:'国内领先的模型库社区，拥有海量精细化LoRA模型',url:'https://www.liblib.art/ '},
             { title:'无界 AI', description:'算力强大，模型风格极多，适合二次元及插画创作',url:'https://wujieai.com'},
@@ -302,6 +301,8 @@ const CATEGORIES = [
             { title:'佐糖AI', description:'图片修复+在线抠图+背景合成',url:'https://picwish.cn/create '},
             { title:'稿定 AI', description:'侧重电商设计，提供AI模特、商品图替换等实操功能',url:'https://gaoding.com'},
             { title:'创客贴 AI', description:'集成绘图与平面设计，适合小白制作海报、社交配图',url:'https://chuangkit.com'},
+            { title:'Stable Diffusion', description:'开源AI图像生成工具”',url:'https://stability.ai/ '},
+            { title:'DALL-E', description:'OpenAI出品，逻辑理解最强，支持精准的文字嵌入',url:'https://www.dall-e.com/ '},
             { title:'Gamma', description:'AI制作PPT 一秒生成',url:'https://gamma.app/ '},
             { title:'Vega AI', description:'在线免费AI插画创作平台',url:'https://applet.rightbrainai.cn/ '}
           ]
