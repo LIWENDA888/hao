@@ -281,8 +281,8 @@ const CATEGORIES = [
     },
     {
       id: 'E',
-      name: '免版权资源',
-      icon: 'copyright',
+      name: '免版权字体',
+      icon: 'type',
       subCategories: [
         { 
           id: 'E1', 
@@ -314,38 +314,61 @@ const CATEGORIES = [
             { title:'Use & Modify', description:'奇怪而美丽的英文字体',url:'https://usemodify.com '},
             { title:'VAN fonts', description:'在线生成英文艺术字',url:'https://vaufonts.com/ '}
           ]
-        },
+        }
+      ],
+    },
+    {
+      id: 'EE',
+      name: '免版权图片',
+      icon: 'image',
+      subCategories: [
         { 
-          id: 'E3', 
-          name: '#免版权图片', 
-          iconConfig: { gradient: 'from-emerald-400 to-teal-600', iconName: 'image' },
+          id: 'EE1', 
+          name: '#精选推荐', 
+          iconConfig: { gradient: 'from-emerald-400 to-purple-600', iconName: 'star' },
           sites: [
-            { title:'搜图神器', description:'多站点免版权图片搜索一键搜索',url:'https://www.logosc.cn/so/ '},
-            { title:'Pexels', description:'全球知名图片视频网站 还支持中文',url:'https://www.pexels.com/zh-cn/ '},
-            { title:'Pixabay', description:'超过450张高质量免版权图库',url:'https://pixabay.com/ '},
-            { title:'Reejpg', description:'共有11.5万张的免费图片库',url:'https://en.freejpg.com.ar/ '},
-            { title:'Kaboompics', description:'按具体的属性进行的分类',url:'https://kaboompics.com/ '},
-            { title:'Picjumbo', description:'图片质量很高的免费图库',url:'https://picjumbo.com/ '},
-            { title:'Fancycrave', description:'分类好的免费图片合集',url:'https://fancycrave.com/stock-photos/free/ '},
-            { title:'Freelyphotos', description:'一个业余爱好者运营的站点',url:'https://www.freelyphotos.com/ '},
-            { title:'Stockvault', description:'每天都会添加新的照片、纹理和插图！',url:'https://www.stockvault.net/ '},
-            { title:'Designerspics', description:'清晰的无版权图片，使用无需署名',url:'http://www.designerspics.com/ '},
-            { title:'Photo stockedito', description:'35万的无版权图片储备提供使用',url:'https://photostockeditor.com/ '},
-            { title:'Shot stash', description:'为专业人士提供有创意的免费高清图片素材',url:'https://shotstash.com/ '},
-            { title:'Pakutaso', description:'日本很知名的图片素材站',url:'https://www.pakutaso.com/ '},
-            { title:'Visualhunt', description:'界面比较清爽的图片搜索站点',url:'https://visualhunt.com/ '},
-            { title:'Hippopx', description:'分类比较细致的免版权图库',url:'https://www.hippopx.com/ '},
-            { title:'Unsplash', description:'分类比较详细，各种类型都有',url:'https://unsplash.com/ '},
-            { title:'Everypixel', description:'能智能搜索各大图片网站的图片',url:'https://www.everypixel.com '},
-            { title:'Barnimages', description:'提供免费高清晰度图片集合的站点',url:'https://barnimages.com '},
-            { title:'Jeshoots', description:'图片质量还不错的无版权图片网站',url:'https://jeshoots.com/ '},
-            { title:'Gratisography', description:'精选时尚流行和富有设计感的图片',url:'http://gratisography.com/ '}
+            { title: '搜图神器', description: '多站点免版权图片搜索一键搜索', url: 'https://www.logosc.cn/so/' },
+            { title: 'Pexels', description: '全球知名图片视频网站，支持中文搜索', url: 'https://www.pexels.com/zh-cn/' },
+            { title: 'Pixabay', description: '超450万张高质量图库，含矢量图和插画', url: 'https://pixabay.com/' },
+            { title: 'Unsplash', description: '全球摄影师社区，画质极高且极具艺术感', url: 'https://unsplash.com/' },
+            { title: 'Hippopx', description: '分类极细致，基于CCO协议的高清免版图库', url: 'https://www.hippopx.com/' },
+            { title: 'Everypixel', description: '智能AI引擎，一键搜索全球数十个免版图库', url: 'https://www.everypixel.com' },
+            { title: 'Gratisography', description: '主打创意、搞怪和时尚流行的高表现力图片', url: 'http://gratisography.com/' },
+            { title: 'Wallhaven', description: '全球顶尖壁纸站，设计师找灵感圣地', url: 'https://wallhaven.cc/' },
+            { title: 'Foodiesfeed', description: '最专业的美食摄影图库，电商设计必备', url: 'https://www.foodiesfeed.com/' }
           ]
         },
+ { 
+          id: 'EE2', 
+          name: '#更多推荐', 
+          iconConfig: { gradient: 'from-emerald-400 to-purple-600', iconName: 'image' },
+          sites: [
+            { title: 'Reejpg', description: '共有11.5万张的免费图片库', url: 'https://en.freejpg.com.ar/' },
+            { title: 'Kaboompics', description: '按具体的属性分类，支持配色建议方案', url: 'https://kaboompics.com/' },
+            { title: 'Picjumbo', description: '图片质量很高的免费图库，适合多种商业场景', url: 'https://picjumbo.com/' },
+            { title: 'Fancycrave', description: '分类好的免费图片合集，富有生活气息', url: 'https://fancycrave.com/stock-photos/free/' },
+            { title: 'Freelyphotos', description: '一个业余爱好者运营的优质图片站点', url: 'https://www.freelyphotos.com/' },
+            { title: 'Stockvault', description: '每天更新照片、纹理和插图素材', url: 'https://www.stockvault.net/' },
+            { title: 'Designerspics', description: '清晰的无版权图片，商业使用无需署名', url: 'http://www.designerspics.com/' },
+            { title: 'Photo stockedito', description: '35万的无版权图片储备提供使用', url: 'https://photostockeditor.com/' },
+            { title: 'Shot stash', description: '为专业人士提供有创意的免费高清图片', url: 'https://shotstash.com/' },
+            { title: 'Pakutaso', description: '日本很知名的图片素材站，充满亚洲面孔', url: 'https://www.pakutaso.com/' },
+            { title: 'Visualhunt', description: '界面比较清爽的图片聚合搜索站点', url: 'https://visualhunt.com/' },
+            { title: 'Barnimages', description: '提供免费高清晰度图片集合的站点', url: 'https://barnimages.com' },
+            { title: 'Jeshoots', description: '图片质量还不错的无版权图片网站', url: 'https://jeshoots.com/' }
+          ]
+        }
+      ],
+    },
+    {
+      id: 'EEE',
+      name: '免版权音视频',
+      icon: 'film',
+      subCategories: [
         { 
-          id: 'E4', 
+          id: 'EEE', 
           name: '#免版权视频', 
-          iconConfig: { gradient: 'from-emerald-400 to-teal-600', iconName: 'film' },
+          iconConfig: { gradient: 'from-rose-500 to-teal-600', iconName: 'film' },
           sites: [
             { title:'Coverr', description:'使用免费的视频素材无需注明出处',url:'https://coverr.co/stock-video-footage '},
             { title:'Mazwai', description:'专为视频剪辑打造的免版权视频站',url:'https://mazwai.com '},
@@ -356,9 +379,9 @@ const CATEGORIES = [
           ]
         },
         { 
-          id: 'E5', 
+          id: 'EEE2', 
           name: '#免版权音乐', 
-          iconConfig: { gradient: 'from-emerald-400 to-teal-600', iconName: 'music-2' },
+          iconConfig: { gradient: 'from-rose-500 to-teal-600', iconName: 'music-2' },
           sites: [
             { title:'Dova-s', description:'提供超过上万首免费音乐素材',url:'https://dova-s.jp/ '},
             { title:'Chagasi', description:'原创的自由使用免版权音乐素材',url:'http://amachamusic.chagasi.com/ '},
@@ -370,9 +393,9 @@ const CATEGORIES = [
           ]
         },
         { 
-          id: 'E6', 
+          id: 'EEE3', 
           name: '#免版权音效', 
-          iconConfig: { gradient: 'from-emerald-400 to-teal-600', iconName: 'volume-2' },
+          iconConfig: { gradient: 'from-rose-500 to-teal-600', iconName: 'volume-2' },
           sites: [
              { title:'爱给网', description:'国内最大的素材库，音效分类极细，大部分支持免费商用',url:'https://www.aigei.com/sound/class/'},
              { title:'耳聆网', description:'专业的音频分享社区，以实地录制音效为主，完全免费',url:'https://www.ear0.com/ '},
@@ -766,7 +789,7 @@ const CATEGORIES = [
     {
       id: 'J',
       name: '设计资讯',
-      icon: 'graduation-cap',
+      icon: 'newspaper',
       subCategories: [
         { 
           id: 'J1', 
@@ -790,11 +813,18 @@ const CATEGORIES = [
              { title: '方正奖字体设计大赛', description: '目前国内规格最高、覆盖面最广的字体设计赛事之一', url: 'https://ztds.foundertype.com/' },
              { title: '汉仪字体之星', description: '汉仪字库主办,以探索发掘优秀字体作品为导向的专业竞赛', url: 'https://www.fontstar.com.cn/home' }
           ]
-        },
+        }
+      ],
+    },
+    {
+      id: 'K',
+      name: '版权合同',
+      icon: 'shield-check',
+      subCategories: [
         { 
-          id: 'J3', 
+          id: 'K1', 
           name: '#版权登记', 
-          iconConfig: { gradient: 'from-pink-400 to-cyan-600',  iconName: 'copyright' },
+          iconConfig: { gradient: 'from-pink-600 to-orange-400',  iconName: 'copyright' },
           sites: [
              { title: '北京版权登记', description: '完全免费，国内公认最快最稳定的在线办理通道', url: 'https://banshi.beijing.gov.cn' },
              { title: '上海版权登记', description: '一网通办实名认证，全流程电子化，办证效率极高', url: 'https://shbqdj.cn/#/index' },
@@ -811,9 +841,9 @@ const CATEGORIES = [
           ]
         },
         { 
-          id: 'J4', 
+          id: 'K2', 
           name: '#版权保护', 
-          iconConfig: { gradient: 'from-pink-400 to-cyan-600',  iconName: 'shield-check' },
+          iconConfig: { gradient: 'from-pink-600 to-orange-400',  iconName: 'shield-check' },
           sites: [
             { title: '中国版权保护中心', description: '国家级权威机构，美术作品登记300元/件起', url: 'https://www.ccopyright.com.cn' },
             { title: '可信时间戳 (TSA)', description: '国家授时中心支持，为电子作品提供秒级确权法律证明', url: 'https://www.tsa.cn/' },
@@ -822,23 +852,23 @@ const CATEGORIES = [
           ]
         },
         { 
-          id: 'J5', 
+          id: 'K3', 
           name: '#商业合同', 
-          iconConfig: { gradient: 'from-pink-400 to-cyan-600',  iconName: 'file-text' },
+          iconConfig: { gradient: 'from-pink-600 to-orange-400',  iconName: 'file-text' },
           sites: [
             { title: '法天使', description: '提供极其专业的设计服务合同模板，条款严密防避坑', url: 'https://www.fatianshi.cn' },
             { title: '法大大', description: '电子合同签署标杆，让设计师远程接单更具法律保障', url: 'https://www.fadada.com' }
           ]
-        },
+        }
       ],
     },
     {
-      id: 'K',
+      id: 'L',
       name: '软件工具',
       icon: 'laptop',
       subCategories: [
         { 
-          id: 'K1', 
+          id: 'L1', 
           name: '#软件下载', 
           iconConfig: { gradient: 'from-slate-500 to-gray-600', iconName: 'hard-drive-download' },
           sites: [
@@ -853,7 +883,7 @@ const CATEGORIES = [
           ]
         },
         { 
-          id: 'K2', 
+          id: 'L2', 
           name: '#资源搜索', 
           iconConfig: { gradient: 'from-slate-500 to-gray-600', iconName: 'search-code' },
           sites: [
@@ -864,7 +894,7 @@ const CATEGORIES = [
           ]
         },
         { 
-          id: 'K3', 
+          id: 'L3', 
           name: '#格式转换', 
           iconConfig: { gradient: 'from-slate-500 to-gray-600', iconName: 'refresh-ccw' },
           sites: [
@@ -878,7 +908,7 @@ const CATEGORIES = [
           ]
         },
         { 
-          id: 'K4', 
+          id: 'L4', 
           name: '#偏门利器', 
           iconConfig: { gradient: 'from-slate-500 to-gray-600', iconName: 'settings' },
           sites: [
