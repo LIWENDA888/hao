@@ -243,10 +243,7 @@ const CATEGORIES = [
             { title:'佐糖AI', description:'图片修复+在线抠图+背景合成',url:'https://picwish.cn/create '},
             { title:'稿定 AI', description:'侧重电商设计，提供AI模特、商品图替换等实操功能',url:'https://gaoding.com'},
             { title:'创客贴 AI', description:'集成绘图与平面设计，适合小白制作海报、社交配图',url:'https://chuangkit.com'},
-            { title:'Stable Diffusion', description:'开源AI图像生成工具”',url:'https://stability.ai/ '},
-            { title:'DALL-E', description:'OpenAI出品，逻辑理解最强，支持精准的文字嵌入',url:'https://www.dall-e.com/ '},
-            { title:'Gamma', description:'AI制作PPT 一秒生成',url:'https://gamma.app/ '},
-            { title:'Vega AI', description:'在线免费AI插画创作平台',url:'https://applet.rightbrainai.cn/ '}
+            { title:'DALL-E', description:'OpenAI出品，逻辑理解最强，支持精准的文字嵌入',url:'https://www.dall-e.com/ '}
           ]
         },
         { 
