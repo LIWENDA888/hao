@@ -141,7 +141,7 @@ const CATEGORIES = [
         { 
           id: 'B3', 
           name: '#国际视野', 
-          iconConfig: { gradient: 'from-gray-600 to-gray-800', iconName: 'sparkles' },
+          iconConfig: { gradient: 'from-gray-600 to-gray-800', iconName: 'eye' },
           sites: [
             { title: 'Justfont Blog', description: '来自台湾的高质量字体博客，深入浅出讲解字形构造逻辑', url: 'https://blog.justfont.com/' },
             { title: 'Glyphs', description: '行业标杆级的字体设计软件官网，社区内有大量专业教程', url: 'https://glyphsapp.com/zh/' },
@@ -232,7 +232,7 @@ const CATEGORIES = [
         },
         { 
           id: 'D2', 
-          name: '#AI图片', 
+          name: '#AI生图', 
           iconConfig: { gradient: 'from-violet-500 to-purple-600', iconName: 'palette' },
           sites: [
             { title:'即梦AI', description:'字节跳动出品，文生图、图生图，每日有固定的免费额度',url:'https://jimeng.jianying.com'},
@@ -262,7 +262,7 @@ const CATEGORIES = [
         },
         { 
           id: 'D4', 
-          name: '#AI音频', 
+          name: '#AI音乐', 
           iconConfig: { gradient: 'from-violet-500 to-purple-600', iconName: 'audio-waveform' },
           sites: [
             { title: '网易天音', description: '针对词曲编全流程，适合零基础用户创作流行音乐', url: 'https://tianyin.music.163.com' },
@@ -279,11 +279,11 @@ const CATEGORIES = [
     {
       id: 'E',
       name: '免版权字体',
-      icon: 'type',
+      icon: 'case-sensitive',
       subCategories: [
         { 
           id: 'E1', 
-          name: '#免版权中文字体', 
+          name: '#中文字体', 
           iconConfig: { gradient: 'from-emerald-400 to-teal-600', iconName: 'type' },
           sites: [
             { title:'字体天下', description:'资源极多，设有专门的“免版税商用”分类标签',url:'https://www.fonts.net.cn/ '},
@@ -295,7 +295,7 @@ const CATEGORIES = [
         },
         { 
           id: 'E2', 
-          name: '#免版权英文字体', 
+          name: '#英文字体', 
           iconConfig: { gradient: 'from-emerald-400 to-teal-600', iconName: 'languages' },
           sites: [
             { title:'Fontspace', description:'好看的英文字体这里都有',url:'https://www.fontspace.com '},
@@ -317,12 +317,12 @@ const CATEGORIES = [
     {
       id: 'EE',
       name: '免版权图片',
-      icon: 'image',
+      icon: 'images',
       subCategories: [
         { 
           id: 'EE1', 
-          name: '#精选推荐', 
-          iconConfig: { gradient: 'from-emerald-400 to-purple-600', iconName: 'star' },
+          name: '#精选站点推荐', 
+          iconConfig: { gradient: 'from-emerald-400 to-purple-600', iconName: 'image-plus' },
           sites: [
             { title: '搜图神器', description: '多站点免版权图片搜索一键搜索', url: 'https://www.logosc.cn/so/' },
             { title: 'Pexels', description: '全球知名图片视频网站，支持中文搜索', url: 'https://www.pexels.com/zh-cn/' },
@@ -360,7 +360,7 @@ const CATEGORIES = [
     {
       id: 'EEE',
       name: '免版权音视频',
-      icon: 'film',
+      icon: 'clapperboard',
       subCategories: [
         { 
           id: 'EEE', 
