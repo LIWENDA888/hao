@@ -235,10 +235,10 @@ const CATEGORIES = [
           name: '#AI图片', 
           iconConfig: { gradient: 'from-violet-500 to-purple-600', iconName: 'palette' },
           sites: [
-            { title:'即梦AI', description:'字节跳动出品，文生图、图生图，每日有固定的免费额度',url:'https://jimeng.jianying.com/ '},
+            { title:'即梦AI', description:'字节跳动出品，文生图、图生图，每日有固定的免费额度',url:'https://jimeng.com/ '},
             { title:'Liblib AI', description:'国内领先的模型库社区，拥有海量精细化LoRA模型',url:'https://www.liblib.art/ '},
             { title:'无界 AI', description:'算力强大，模型风格极多，适合二次元及插画创作',url:'https://wujieai.com'},
-            { title:'堆友', description:'阿里设计师平台，主打3D素材、头像及电商海报生成',url:'https://duiyou.com '},
+            { title:'堆友', description:'阿里设计师平台，主打3D素材、头像及电商海报生成',url:'https://d.design'},
             { title:'通义万相', description:'阿里旗下，涵盖文生图、虚拟模特，商业设计效率高',url:'https://tongyi.aliyun.com/wanxiang/ '},
             { title:'佐糖AI', description:'图片修复+在线抠图+背景合成',url:'https://picwish.cn/create '},
             { title:'稿定 AI', description:'侧重电商设计，提供AI模特、商品图替换等实操功能',url:'https://gaoding.com'},
@@ -252,7 +252,7 @@ const CATEGORIES = [
           iconConfig: { gradient: 'from-violet-500 to-purple-600', iconName: 'video' },
           sites: [
             { title: '可灵AI', description: '快手出品，支持2分钟长视频，物理特性极其真实', url: 'https://klingai.com' },
-            { title: '即梦 AI', description: '字节跳动出品，与剪映深度集成，运镜控制非常灵活', url: 'https://jimeng.douyin.com' },
+            { title: '即梦 AI', description: '字节跳动出品，与剪映深度集成，运镜控制非常灵活', url: 'https://jimeng.com' },
             { title: '海螺 AI', description: 'MiniMax旗下，人像表情自然，动作流畅度行业领先', url: 'https://hailuoai.com' },
             { title: 'Vidu', description: '生数科技研发，国产Sora级模型，支持复杂的一致性生成', url: 'https://vidu.cn' },
             { title: '智谱清影', description: '智谱AI出品，生成速度快，国产开源生态的核心力量', url: 'https://chatglm.cn' },
