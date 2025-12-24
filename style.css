@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* 自定义 CSS - Tailwind CDN 会自动处理基础样式，此处仅保留覆盖样式 */
 
 html { scroll-behavior: smooth; }
 body { -webkit-font-smoothing: antialiased; }
@@ -20,22 +18,13 @@ body { -webkit-font-smoothing: antialiased; }
 .dark #search-form:focus-within { background: #1f2937; }
 
 /* 背景光斑动画 */
-@keyframes blob {
-    0% { transform: translate(0px, 0px) scale(1); }
-    33% { transform: translate(30px, -50px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
-    100% { transform: translate(0px, 0px) scale(1); }
-}
 .animate-blob { animation: blob 10s infinite; }
 .animation-delay-2000 { animation-delay: 2s; }
 .animation-delay-4000 { animation-delay: 4s; }
 
 /* --- 玻璃拟态与UI组件 --- */
-
-/* 环境背景 */
 #ambient-bg { opacity: 1; }
 
-/* 顶部导航背景 */
 #header-bg { 
     background: linear-gradient(to bottom, rgba(245,245,247,0.85), rgba(245,245,247,0.4)); 
     backdrop-filter: blur(12px); 
@@ -46,7 +35,6 @@ body { -webkit-font-smoothing: antialiased; }
     border-bottom: 1px solid rgba(255,255,255,0.05); 
 }
 
-/* 核心容器面板 */
 .panel-container {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
     backdrop-filter: blur(20px) saturate(180%);
@@ -60,9 +48,6 @@ body { -webkit-font-smoothing: antialiased; }
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
-/* === 站点卡片样式优化 === 
-   去除了悬浮时的有色边框，改为内发光和更通透的背景，模拟液态玻璃
-*/
 .site-card { 
     background-color: rgba(255, 255, 255, 0.4); 
     border: 1px solid rgba(255, 255, 255, 0.5); 
@@ -77,33 +62,25 @@ body { -webkit-font-smoothing: antialiased; }
 
 .site-card:hover { 
     transform: translateY(-4px) scale(1.01); 
-    /* 背景更通透，不再是实色 */
     background: rgba(255, 255, 255, 0.65); 
-    /* 边框变为极淡的白色，不再是橙色 */
     border-color: rgba(255, 255, 255, 0.8); 
-    /* 增加投影和白色内发光(inset)来增加玻璃厚度感 */
-    box-shadow: 
-        0 20px 40px -5px rgba(255, 140, 25, 0.1), 
-        inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+    box-shadow: 0 20px 40px -5px rgba(255, 140, 25, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
     z-index: 10;
 }
 .dark .site-card:hover { 
     background: rgba(40, 40, 40, 0.6); 
     border-color: rgba(255, 255, 255, 0.15); 
-    box-shadow: 
-        0 20px 40px -5px rgba(0, 0, 0, 0.5),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 /* --- 滑块动画核心样式 --- */
 .glider-transition {
-    transition-property: left, width, top, transform;
-    transition-duration: 400ms;
-    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-    will-change: left, width, top;
+    transition-property: left, width, top, height, transform;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: left, width, top, height;
 }
 
-/* 引擎切换器的滑块下划线 */
 #engine-glider {
     position: absolute;
     bottom: 0;
@@ -115,7 +92,6 @@ body { -webkit-font-smoothing: antialiased; }
     z-index: 10;
 }
 
-/* 二级分类的背景滑块 */
 .subcategory-glider {
     position: absolute;
     top: 0;
