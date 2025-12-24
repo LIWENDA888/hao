@@ -251,7 +251,7 @@ const CATEGORIES = [
           name: '#AI视频', 
           iconConfig: { gradient: 'from-violet-500 to-purple-600', iconName: 'video' },
           sites: [
-            { title: '可灵AI', description: '快手出品，支持2分钟长视频，物理特性极其真实', url: 'https://klingai.com' },
+            { title: '可灵AI', description: '快手出品，支持2分钟长视频，物理特性极其真实', url: 'https://app.klingai.com/cn/' },
             { title: '即梦 AI', description: '字节跳动出品，与剪映深度集成，运镜控制非常灵活', url: 'https://jimeng.com' },
             { title: '海螺 AI', description: 'MiniMax旗下，人像表情自然，动作流畅度行业领先', url: 'https://hailuoai.com' },
             { title: 'Vidu', description: '生数科技研发，国产Sora级模型，支持复杂的一致性生成', url: 'https://vidu.cn' },
