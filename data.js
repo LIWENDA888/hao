@@ -236,7 +236,7 @@ const CATEGORIES = [
           iconConfig: { gradient: 'from-violet-500 to-purple-600', iconName: 'palette' },
           sites: [
             { title:'即梦AI', description:'字节跳动出品，文生图、图生图，每日有固定的免费额度',url:'https://jimeng.jianying.com'},
-            { title:'Liblib', description:'国内领先的模型库社区，拥有海量精细化LoRA模型',url:'https://www.liblib.art/ '},
+            { title:'哩布哩布AI', description:'国内领先的模型库社区，拥有海量精细化LoRA模型',url:'https://www.liblib.art/ '},
             { title:'无界AI', description:'算力强大，模型风格极多，适合二次元及插画创作',url:'https://wujieai.com'},
             { title:'堆友', description:'阿里设计师平台，主打3D素材、头像及电商海报生成',url:'https://d.design'},
             { title:'通义万相', description:'阿里旗下，涵盖文生图、虚拟模特，商业设计效率高',url:'https://tongyi.aliyun.com/wanxiang/ '},
