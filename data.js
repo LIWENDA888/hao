@@ -125,7 +125,7 @@ const CATEGORIES = [
         },
         { 
           id: 'B2', 
-          name: '#字体灵感', 
+          name: '#灵感创意', 
           iconConfig: { gradient: 'from-gray-600 to-gray-800', iconName: 'sparkles' },
           sites: [
             { title: '站酷-字体', description: '站酷站内的字体设计师会在这里展示最新的设计作品', url: 'https://www.zcool.com.cn/discover?cate=8&subCate=14' },
@@ -177,7 +177,7 @@ const CATEGORIES = [
         },
         { 
           id: 'B5', 
-          name: '#字体工具', 
+          name: '#字符工具', 
           iconConfig: { gradient: 'from-gray-600 to-gray-800', iconName: 'case-lower' },
           sites: [
             { title:'字体大师', description:'在线写字，生成自己的字库字体',url:'https://v.ziti163.com/Font#/ '},
@@ -193,7 +193,7 @@ const CATEGORIES = [
         },
         { 
           id: 'B6', 
-          name: '#字体动效', 
+          name: '#动态效果', 
           iconConfig: { gradient: 'from-gray-600 to-gray-800', iconName: 'clapperboard' },
           sites: [
             { title:'Photo Animation', description:'上传图片生成类似PPT转场动画',url:'https://boolpic.fun/animation '},
