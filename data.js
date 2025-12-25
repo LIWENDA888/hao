@@ -125,7 +125,7 @@ const CATEGORIES = [
         },
         { 
           id: 'B2', 
-          name: '#灵感创意', 
+          name: '#字体灵感', 
           iconConfig: { gradient: 'from-gray-600 to-gray-800', iconName: 'sparkles' },
           sites: [
             { title: '站酷-字体', description: '站酷站内的字体设计师会在这里展示最新的设计作品', url: 'https://www.zcool.com.cn/discover?cate=8&subCate=14' },
