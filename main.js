@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
         activeEngine: SEARCH_ENGINES[0] || {},
         activeCategoryId: CATEGORIES[0]?.id || '',
         activeSubCategoryIds: {},
-        isProgrammaticScroll: false
+        isProgrammaticScroll: false, // 是否正在进行代码控制的滚动
+        scrollTimer: null // 用于管理滚动锁定的定时器
     };
 
     // 初始化所有分类的默认子分类
@@ -136,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (window.lucide) window.lucide.createIcons({ root: container });
         
-        // 绑定事件 (重新渲染时需要)
+        // 绑定事件
         container.querySelectorAll('.sidebar-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -154,33 +155,17 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const lastCatId = CATEGORIES[CATEGORIES.length - 1].id;
         const lastSection = document.getElementById(`category-${lastCatId}`);
-
         if (!lastSection) return;
 
-        // 1. 获取视口高度
         const viewportHeight = window.innerHeight;
-        
-        // 2. 获取顶部导航和吸顶偏移量 (Mobile 80px / Desktop 110px)
         const headerOffset = window.innerWidth < 1024 ? 80 : 110;
-        
-        // 3. 计算中间的间距 (main padding-bottom + footer margin-top)
-        // main class="... pb-8" (32px)
-        // footer class="mt-8 ..." (32px)
-        // 合计 64px。为了防止微小的像素误差，我们预留 60px 即可
         const gap = 64; 
-
-        // 4. 获取最后一个区块的实际高度
         const lastSectionHeight = lastSection.offsetHeight;
 
-        // 5. 核心公式：
-        // 我们需要剩余空间 = 视口高度 - 顶部偏移 - 最后一个区块高度 - 中间间隙
         let minHeight = viewportHeight - headerOffset - lastSectionHeight - gap;
-        
-        // 6. 边界检查：如果不为负数，则应用。如果为负数，说明最后一个区块很高，自然撑开即可，不需要额外 Footer 高度
-        // 注意：Footer 本身有 padding (pt-20 pb-10)，我们设置的是 min-height，内容不会被截断
         footer.style.minHeight = minHeight > 0 ? `${minHeight}px` : 'auto';
 
-    }, 30); // 响应速度稍微调快一点
+    }, 30);
 
     // --- 主内容渲染 ---
     const renderContent = () => {
@@ -211,7 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
             renderCards(cat);
         });
 
-        // 监听最后一个 Section 的高度变化（实现真正的自适应）
         const lastCatId = CATEGORIES[CATEGORIES.length - 1].id;
         const lastSection = document.getElementById(`category-${lastCatId}`);
         if(lastSection) {
@@ -221,9 +205,9 @@ document.addEventListener('DOMContentLoaded', () => {
             sectionResizeObserver.observe(lastSection);
         }
         
-        if (window.lucide) window.lucide.createIcons(); // 初次加载渲染所有
+        if (window.lucide) window.lucide.createIcons();
         setTimeout(adjustFooterHeight, 100);
-        setupIntersectionObserver(); // 初始化观察器
+        setupIntersectionObserver();
     };
 
     // --- 子分类 Tab 逻辑 ---
@@ -270,7 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // Event Delegation
         container.addEventListener('click', (e) => {
              const btn = e.target.closest('.subcat-btn');
              if(!btn) return;
@@ -280,7 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.activeSubCategoryIds[cat.id] = subId;
                 updateTabUI();
                 renderCards(cat);
-                // 此时高度可能变化，由 ResizeObserver 自动处理，但也手动触发一次
                 setTimeout(adjustFooterHeight, 50);
             }
         });
@@ -289,8 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
             requestAnimationFrame(updateTabUI);
         }, 100));
         resizeObserver.observe(container);
-        
-        // 初始化一次
         updateTabUI();
     };
 
@@ -302,7 +282,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (!activeSub) return;
         
-        // 动画重置
         container.classList.remove('animate-fade-in-up');
         void container.offsetWidth; 
         container.classList.add('animate-fade-in-up');
@@ -322,28 +301,58 @@ document.addEventListener('DOMContentLoaded', () => {
             </a>
         `).join('');
         
-        // 仅在当前容器内渲染图标，提高性能
         if (window.lucide) window.lucide.createIcons({ root: container });
     };
 
-    // --- 滚动与交互逻辑优化 (IntersectionObserver) ---
+    // --- 统一交互核心逻辑 (Scroll & Click Sync) ---
+    
+    // 1. 点击跳转逻辑：立即更新UI + 平滑滚动 + 锁定监听
+    const scrollToCategory = (id) => {
+        // 立即清除之前的定时器
+        if (state.scrollTimer) clearTimeout(state.scrollTimer);
+        
+        // 状态加锁
+        state.isProgrammaticScroll = true;
+        
+        // 立即更新侧边栏UI（提供即时反馈）
+        state.activeCategoryId = id;
+        updateSidebarUI();
+        
+        const el = document.getElementById(`category-${id}`);
+        if (el) {
+            // 使用原生平滑滚动，它会自动对齐 scroll-margin-top
+            el.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // 设定一个稍微宽裕的解锁时间，或者在检测到滚动结束时解锁
+            // 简单起见，使用 1000ms 覆盖大部分平滑滚动时长
+            state.scrollTimer = setTimeout(() => { 
+                state.isProgrammaticScroll = false; 
+            }, 1000);
+        }
+    };
+
+    // 2. 滚动监听逻辑：判定线调整为屏幕上方 15% 处
     const setupIntersectionObserver = () => {
-        // 配置观察器选项：当元素进入视口中心附近时触发
         const options = {
             root: null,
-            rootMargin: '-20% 0px -60% 0px', // 顶部留空 20%，底部留空 60%，聚焦屏幕中上部
+            // 关键修改：判定线改为距离顶部 15% 到 80% 的区域
+            // 这意味着当元素的顶部进入屏幕上方这一条狭窄的“阅读线”时，才会触发高亮
+            rootMargin: '-15% 0px -80% 0px', 
             threshold: 0
         };
 
         const observer = new IntersectionObserver((entries) => {
-            // 如果是程序化滚动（点击侧边栏），则暂停自动高亮检测
+            // 如果是点击触发的滚动，完全忽略观察器，防止高亮乱跳
             if (state.isProgrammaticScroll) return;
 
-            // 找出当前所有可见的 section
+            // 找到所有进入判定区域的元素
             const visibleSections = entries.filter(entry => entry.isIntersecting);
             
             if (visibleSections.length > 0) {
-                // 如果有多个可见，取第一个
+                // 通常只会有一个，如果有多个，取第一个
                 const targetId = visibleSections[0].target.getAttribute('data-cat-id');
                 if (targetId && targetId !== state.activeCategoryId) {
                     state.activeCategoryId = targetId;
@@ -355,22 +364,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.category-section').forEach(section => {
             observer.observe(section);
         });
-    };
-
-    const scrollToCategory = (id) => {
-        state.activeCategoryId = id;
-        state.isProgrammaticScroll = true; // 锁定状态
-        updateSidebarUI();
-        
-        const el = document.getElementById(`category-${id}`);
-        if (el) {
-            el.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-            // 解锁状态
-            setTimeout(() => { state.isProgrammaticScroll = false; }, 1200);
-        }
     };
 
     const updateSidebarUI = () => {
