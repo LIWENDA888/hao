@@ -147,26 +147,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // --- 动态计算 Footer 高度 (带防抖) ---
+    // --- 动态计算 Footer 高度 (精确自适应版) ---
     const adjustFooterHeight = debounce(() => {
         const footer = document.getElementById('main-footer');
-        if (!CATEGORIES.length) return;
+        if (!CATEGORIES.length || !footer) return;
         
         const lastCatId = CATEGORIES[CATEGORIES.length - 1].id;
         const lastSection = document.getElementById(`category-${lastCatId}`);
 
-        if (!footer || !lastSection) return;
+        if (!lastSection) return;
 
-        const offset = window.innerWidth < 1024 ? 80 : 110;
+        // 1. 获取视口高度
         const viewportHeight = window.innerHeight;
+        
+        // 2. 获取顶部导航和吸顶偏移量 (Mobile 80px / Desktop 110px)
+        const headerOffset = window.innerWidth < 1024 ? 80 : 110;
+        
+        // 3. 计算中间的间距 (main padding-bottom + footer margin-top)
+        // main class="... pb-8" (32px)
+        // footer class="mt-8 ..." (32px)
+        // 合计 64px。为了防止微小的像素误差，我们预留 60px 即可
+        const gap = 64; 
+
+        // 4. 获取最后一个区块的实际高度
         const lastSectionHeight = lastSection.offsetHeight;
+
+        // 5. 核心公式：
+        // 我们需要剩余空间 = 视口高度 - 顶部偏移 - 最后一个区块高度 - 中间间隙
+        let minHeight = viewportHeight - headerOffset - lastSectionHeight - gap;
         
-        // 确保最后一个区块到底部有足够的空间
-        let minHeight = viewportHeight - offset - lastSectionHeight;
-        if (minHeight < 0) minHeight = 0; 
-        
+        // 6. 边界检查：如果不为负数，则应用。如果为负数，说明最后一个区块很高，自然撑开即可，不需要额外 Footer 高度
+        // 注意：Footer 本身有 padding (pt-20 pb-10)，我们设置的是 min-height，内容不会被截断
         footer.style.minHeight = minHeight > 0 ? `${minHeight}px` : 'auto';
-    }, 50);
+
+    }, 30); // 响应速度稍微调快一点
 
     // --- 主内容渲染 ---
     const renderContent = () => {
@@ -196,6 +210,16 @@ document.addEventListener('DOMContentLoaded', () => {
             initSubCategoryTabs(cat); 
             renderCards(cat);
         });
+
+        // 监听最后一个 Section 的高度变化（实现真正的自适应）
+        const lastCatId = CATEGORIES[CATEGORIES.length - 1].id;
+        const lastSection = document.getElementById(`category-${lastCatId}`);
+        if(lastSection) {
+            const sectionResizeObserver = new ResizeObserver(() => {
+                adjustFooterHeight();
+            });
+            sectionResizeObserver.observe(lastSection);
+        }
         
         if (window.lucide) window.lucide.createIcons(); // 初次加载渲染所有
         setTimeout(adjustFooterHeight, 100);
@@ -256,15 +280,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.activeSubCategoryIds[cat.id] = subId;
                 updateTabUI();
                 renderCards(cat);
+                // 此时高度可能变化，由 ResizeObserver 自动处理，但也手动触发一次
                 setTimeout(adjustFooterHeight, 50);
             }
         });
 
         const resizeObserver = new ResizeObserver(debounce(() => {
             requestAnimationFrame(updateTabUI);
-            if (cat.id === CATEGORIES[CATEGORIES.length - 1].id) {
-                 adjustFooterHeight();
-            }
         }, 100));
         resizeObserver.observe(container);
         
@@ -342,15 +364,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const el = document.getElementById(`category-${id}`);
         if (el) {
-            const offset = window.innerWidth < 1024 ? 80 : 110;
-            const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
-            
-            window.scrollTo({
-                top: elementPosition - offset,
-                behavior: "smooth"
+            el.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
             // 解锁状态
-            setTimeout(() => { state.isProgrammaticScroll = false; }, 1000);
+            setTimeout(() => { state.isProgrammaticScroll = false; }, 1200);
         }
     };
 
