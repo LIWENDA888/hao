@@ -110,6 +110,7 @@ const CATEGORIES = [
             { title: '字根书法字典', description: '动画很丝滑，湖南字根研究中心推出的web端书法工具', url: 'https://zgzd.wantuyun.cn/dictionary/search'},
             { title: '集古作书法', description: '不仅有各类书法字，还有字画等，五花八门的都有', url: 'https://www.jiguzuo.com/shufa/'},
             { title: '书法字体', description: '数量多且排列舒适，页面扑面而来的古风', url: 'https://tool.wikichina.com/shufa/index.asp'},
+            { title: '书法迷', description: '中国书法字典网收集整理大师毛笔字', url: 'http://www.shufami.com/' },
             { title: '书法字典在线查询', description: '页面干净，没有太多广告，比较纯粹的书法展示', url: 'https://www.shufa5.com/'},
             { title: '大图书法字典', description: '大图网旗下的，页面同样是干净几乎无广告', url: 'http://shufa.daquan.la/'},
             { title: '梅花书检', description: '不止支持搜字还支持搜部首查古书风格', url: 'https://www.mhsj.top/'},
@@ -122,12 +123,10 @@ const CATEGORIES = [
           iconConfig: { gradient: 'from-gray-600 to-gray-800', iconName: 'sparkles' },
           sites: [
             { title: '站酷-字体', description: '站酷站内的字体设计师会在这里展示最新的设计作品', url: 'https://www.zcool.com.cn/discover?cate=8&subCate=14' },
-            { title: '图像处理工具集', description: '书法字典 搜汉字的各种书写风格', url: 'https://www.shufazidian.com/' },
-            { title: '书法迷', description: '中国书法字典网收集整理大师毛笔字', url: 'http://www.shufami.com/' },
-            { title: '字形演变', description: '可以查看汉字的演变过程', url: 'https://www.fantiz5.com/zixing/' },
             { title: '字体传奇网', description: '分类收录各风格字体作品和素材', url: 'http://www.ziticq.com/Works' },
             { title: '字体江湖', description: '「字体帮」字体设计师刘兵克建立，会有很多字体设计师在此打卡练习', url: 'https://www.zitisheji.com' },
             { title: 'The Type', description: '深度字体文化媒体，探讨文字设计背后的历史与技术细节', url: 'https://www.thetype.com/' },
+            { title: '书格', description: '开放的数字古籍图书馆。宋体、仿宋字体设计的终极灵感源泉', url: 'https://shuge.org' },
             { title: 'CND设计网-字体灵感', description: 'CND设计网下的字体灵感搜索', url: 'http://ziti.cndesign.com/inspiration.html' }
           ]
         },
@@ -142,6 +141,7 @@ const CATEGORIES = [
             { title: 'It’s Nice That', description: '全球创意媒体，经常有极具实验性的先锋字体设计专题', url: 'https://www.itsnicethat.com/' },
             { title: 'Fonts in Use', description: '独立的字体应用档案库，可以看到同一款字在不同场景的效果', url: 'https://fontsinuse.com/' },
             { title: 'Typographica', description: '专业的字体评论网站，深度解析新发布的字库设计优劣', url: 'https://typographica.org/' },
+            { title: 'Google Fonts', description: '开源字体的多重字重（Weights）排布和屏幕显示优化', url: 'https://fonts.google.com' },
             { title: 'Adobe Fonts', description: '官方字体库，其配套的“排版趋势”报告极具指导意义', url: 'https://fonts.adobe.com/' }
           ]
         },
