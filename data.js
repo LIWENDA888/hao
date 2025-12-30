@@ -53,12 +53,14 @@ const CATEGORIES = [
       subCategories: [
         { 
           id: 'A1', 
-          name: '#日常必备', 
+          name: '#日常使用', 
           iconConfig: { gradient: 'from-orange-500 to-red-500', iconName: 'star' },
           sites: [
-            {title: "花瓣网", description: "国内版Pinterest，设计师寻找参考、建立灵感库必备", url: "https://hunban.com",isFeatured: true,},
-            {title: "站酷网", description: "设计师互动社区，不仅能展示作品，还有专业职场课", url: "https://www.zcool.com.cn", },
-            {title: "优设网", description: "国内人气最高的设计师学习站，提供海量教程与干货", url: "https://www.uisdc.com", },
+            { title: '抖音短视频', description: '字节跳动旗下，用短视频记录分享多彩生活', url: 'https://www.douyin.com/'},
+            { title: '哔哩哔哩', description: '年轻人潮流文化娱乐社区，有多元视频', url: 'https://www.bilibili.com/'},
+            { title: '小红书', description: '年轻人生活分享平台，涵盖多元生活方式', url: 'https://www.xiaohongshu.com/'},
+            { title: '新浪微博', description: '多媒体即时分享，热点与互动传播平台', url: 'https://weibo.com/'},
+            {title: "站酷", description: "设计师互动社区，不仅能展示作品，还有专业职场课", url: "https://www.zcool.com.cn", },
             {title: "Pinterest", description: "全球最大视觉灵感平台，通过图片流获取无限设计创意", url: "https://www.pinterest.com"},
             {title: "Dribbble", description: "侧重UI/UX与动态设计，是全球顶尖设计师交流的主战场", url: "https://dribbble.com/"},
             {title: "Behance", description: "Adobe旗下全球顶尖设计社区，涵盖全行业最高水准作品", url: "https://behance.net/"},
@@ -67,23 +69,12 @@ const CATEGORIES = [
         },
         { 
           id: 'A2', 
-          name: '#影音视听', 
-          iconConfig: { gradient: 'from-orange-500 to-red-500', iconName: 'play-circle' },
-          sites: [
-            { title: '抖音短视频', description: '字节跳动旗下，用短视频记录分享多彩生活', url: 'https://www.douyin.com/'},
-            { title: '哔哩哔哩', description: '年轻人潮流文化娱乐社区，有多元视频', url: 'https://www.bilibili.com/'},
-            { title: '腾讯视频', description: '腾讯旗下，提供海量影视综，畅享多元视听', url: 'https://v.qq.com/'},
-            { title: '优酷', description: '阿里运营，集影视综艺等的综合视频台，为好作品而发力', url: 'https://www.youku.com/'},
-            { title: '爱奇艺', description: '提供丰富剧集、综艺等，满足多样观剧欲的视频平台', url: 'https://www.iqiyi.com/'}
-          ]
-        },
-        { 
-          id: 'A3', 
-          name: '#博客社区', 
+          name: '#娱乐社区', 
           iconConfig: { gradient: 'from-orange-500 to-red-500', iconName: 'message-circle-heart' },
           sites: [
-            { title: '小红书', description: '年轻人生活分享平台，涵盖多元生活方式', url: 'https://www.xiaohongshu.com/'},
-            { title: '新浪微博', description: '多媒体即时分享，热点与互动传播平台', url: 'https://weibo.com/'},
+            { title: '腾讯视频', description: '腾讯旗下，提供海量影视综，畅享多元视听', url: 'https://v.qq.com/'},
+            { title: '优酷', description: '阿里运营，集影视综艺等的综合视频台，为好作品而发力', url: 'https://www.youku.com/'},
+            { title: '爱奇艺', description: '提供丰富剧集、综艺等，满足多样观剧欲的视频平台', url: 'https://www.iqiyi.com/'},
             { title: '百度贴吧', description: '依兴趣聚合用户，打造庞大中文社区', url: 'https://tieba.baidu.com/'},
             { title: 'QQ空间', description: '集日志、相册、互动于一体的个性空间', url: 'https://qzone.qq.com/'},
             { title: '豆瓣', description: '以书影音为基，延展多元兴趣交流社区', url: 'https://www.douban.com/'},
@@ -91,8 +82,8 @@ const CATEGORIES = [
           ]
         },
         { 
-          id: 'A4', 
-          name: '#在线娱乐', 
+          id: 'A3', 
+          name: '#娱乐消遣', 
           iconConfig: { gradient: 'from-orange-500 to-red-500', iconName: 'gamepad-2' },
           sites: [
             { title: 'Tetr.io', description: '多人联机俄罗斯方块，吃鸡版本的特趣思', url: 'https://tetr.io'},
