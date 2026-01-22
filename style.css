@@ -12,7 +12,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* 隐藏滚动条但保留滚动功能 (用于水平滚动区) */
+/* 隐藏滚动条但保留滚动功能 */
 .no-scrollbar::-webkit-scrollbar { 
     display: none; 
 }
@@ -21,7 +21,7 @@ body {
     scrollbar-width: none; 
 }
 
-/* 自定义精致滚动条 (用于九宫格) */
+/* 自定义精致滚动条 */
 .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
 }
@@ -68,16 +68,18 @@ body {
     border-bottom: 1px solid rgba(255,255,255,0.05); 
 }
 
-/* --- 主面板容器样式 --- */
+/* --- 主面板容器样式 (已优化透明度，更透亮) --- */
 .panel-container {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.5) 100%);
+    /* Light Mode: 降低了不透明度，0.65 -> 0.35 */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.35) 100%);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
 }
 .dark .panel-container {
-    background: linear-gradient(180deg, rgba(30, 30, 30, 0.8) 0%, rgba(20, 20, 20, 0.6) 100%);
+    /* Dark Mode: 降低了不透明度 */
+    background: linear-gradient(180deg, rgba(30, 30, 30, 0.6) 0%, rgba(20, 20, 20, 0.4) 100%);
     border-color: rgba(255, 255, 255, 0.08);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
 }
