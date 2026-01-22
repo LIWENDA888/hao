@@ -90,13 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
     };
 
-    // --- 快捷链接 ---
+    // --- 快捷链接 (支持横滑) ---
     const renderQuickLinks = () => {
         const container = document.getElementById('quick-links');
         if (!container) return;
+        // 注意：这里加入了 shrink-0 和 whitespace-nowrap 确保在手机上横向排列不换行
         container.innerHTML = QUICK_LINKS.map(link => `
             <a href="${link.url}" target="_blank" rel="noopener noreferrer"
-               class="group relative overflow-hidden rounded-xl md:rounded-2xl border border-gray-200 bg-gray-50/50 px-3 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-medium text-gray-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:bg-white/60 hover:backdrop-blur-md hover:text-[#FF8C19] hover:shadow-lg hover:shadow-orange-500/10 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700/60 dark:hover:text-[#FF8C19] dark:hover:border-gray-600">
+               class="group relative shrink-0 whitespace-nowrap overflow-hidden rounded-xl md:rounded-2xl border border-gray-200 bg-gray-50/50 px-3 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-medium text-gray-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:bg-white/60 hover:backdrop-blur-md hover:text-[#FF8C19] hover:shadow-lg hover:shadow-orange-500/10 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700/60 dark:hover:text-[#FF8C19] dark:hover:border-gray-600">
                <span class="relative z-10">${link.title}</span>
             </a>
         `).join('');
@@ -257,7 +258,9 @@ document.addEventListener('DOMContentLoaded', () => {
                              <h2 class="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 tracking-tight">${cat.name}</h2>
                         </div>
                         <span class="hidden h-5 w-px bg-gray-300 dark:bg-gray-700 md:block mx-2"></span>
-                        <div class="relative flex flex-wrap items-center p-1 bg-gray-100/50 dark:bg-black/20 rounded-full" id="tabs-${cat.id}"></div>
+                        
+                        <!-- Tabs 容器 (已优化：支持横向滑动，移除 flex-wrap) -->
+                        <div class="relative flex items-center overflow-x-auto no-scrollbar mask-gradient-right pb-1 max-w-full gap-1 p-1 bg-gray-100/50 dark:bg-black/20 rounded-full" id="tabs-${cat.id}"></div>
                     </div>
                     
                     <div id="grid-${cat.id}" class="grid gap-4 md:gap-5 relative z-10 ${
@@ -287,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const buttonsHtml = cat.subCategories.map(sub => `
             <button type="button" data-main="${cat.id}" data-sub="${sub.id}"
-                class="subcat-btn relative z-10 px-4 py-1.5 md:px-5 md:py-2 text-xs md:text-[14px] font-semibold transition-colors duration-300 rounded-full cursor-pointer outline-none select-none">
+                class="subcat-btn shrink-0 whitespace-nowrap relative z-10 px-4 py-1.5 md:px-5 md:py-2 text-xs md:text-[14px] font-semibold transition-colors duration-300 rounded-full cursor-pointer outline-none select-none">
                 ${sub.name}
             </button>
         `).join('');
