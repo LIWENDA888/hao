@@ -260,8 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="hidden h-5 w-px bg-gray-300 dark:bg-gray-700 md:block mx-2"></span>
                         
                         <!-- Tabs 容器 (已优化：支持横向滑动，移除 flex-wrap) -->
-                        <div class="relative flex items-center overflow-x-auto no-scrollbar mask-gradient-right pb-1 max-w-full gap-1 p-1 bg-gray-100/50 dark:bg-black/20 rounded-full" id="tabs-${cat.id}"></div>
-                    </div>
+                        <div class="relative flex items-center overflow-x-auto no-scrollbar pb-1 max-w-full gap-1 p-1 bg-gray-100/50 dark:bg-black/20 rounded-full" id="tabs-${cat.id}"></div>                    </div>
                     
                     <div id="grid-${cat.id}" class="grid gap-4 md:gap-5 relative z-10 ${
                         state.currentAppType === 'prompt' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 
