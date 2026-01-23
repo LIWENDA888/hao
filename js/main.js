@@ -384,11 +384,24 @@ document.addEventListener('DOMContentLoaded', () => {
             container.innerHTML = activeSub.sites.map(site => `
                 <a href="${site.url}" target="_blank" rel="noopener noreferrer"
                    class="group flex flex-col transition-all duration-300 p-0 relative hover:-translate-y-1">
-                    <div class="w-full aspect-[16/9] overflow-hidden rounded-lg relative shadow-sm hover:shadow-[0_15px_30px_-5px_rgba(255,140,25,0.15)] dark:hover:shadow-lg transition-shadow duration-300 bg-gray-100 dark:bg-gray-800">
+                    
+                    <div class="w-full aspect-[16/9] overflow-hidden rounded-lg relative shadow-sm hover:shadow-[0_15px_30px_-5px_rgba(0,0,0,0.08)] transition-shadow duration-300 bg-gray-100 dark:bg-gray-800">
+                        
+                        <!-- 极简装饰性标签：半透明磨砂感 -->
+                        ${site.badge ? `
+                            <div class="absolute top-2 right-2 z-20 px-1.5 py-0.5 text-[9px] font-bold tracking-widest text-white/90 bg-black/20 backdrop-blur-md rounded border border-white/10 pointer-events-none uppercase">
+                                ${site.badge}
+                            </div>
+                        ` : ''}
+                        
                         <img src="${site.image}" alt="${site.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
                     </div>
+        
                     <div class="pt-2 flex items-center justify-center">
-                        <h3 class="text-sm font-bold text-gray-700 dark:text-gray-300 tracking-wide text-center transition-colors">${site.title}</h3>
+                        <!-- 标题恢复原样，悬浮不再变色 -->
+                        <h3 class="text-sm font-bold text-gray-700 dark:text-gray-300 tracking-wide text-center transition-colors">
+                            ${site.title}
+                        </h3>
                     </div>
                 </a>
             `).join('');
