@@ -59,5 +59,6 @@ window.GLOBAL_CONFIG = {
         { title: 'Google Gemini', url: 'https://gemini.google.com/app' },
         { title: 'Github', url: 'https://github.com' },
         { title: '阿里云', url: 'https://aliyun.com' },
+        { title: '呜哩AI', url: 'https://wuli.art' },
     ]
 };
