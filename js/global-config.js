@@ -54,9 +54,9 @@ window.GLOBAL_CONFIG = {
     QUICK_LINKS: [
         { title: '视频在线下载', url: 'https://snapany.com/zh' },
         { title: 'Google Ai Studio', url: 'https://aistudio.google.com' },
+        { title: 'Lovart', url: 'https://www.lovart.ai' },
         { title: 'Google Gemini', url: 'https://gemini.google.com/app' },
         { title: 'Github', url: 'https://github.com' },
         { title: '阿里云', url: 'https://aliyun.com' },
-        { title: '呜哩AI', url: 'https://wuli.art' },
     ]
 };
