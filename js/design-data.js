@@ -866,6 +866,7 @@ window.DESIGN_DATA = [
           { title: '网址变短', description: '可以让任何网址变短的神器', url: 'https://www.shorturl.at' },
           { title: '卡通头像生成', description: '在线设计卡通头像并下载', url: 'https://personas.draftbit.com' },
           { title: '聊天截图生成', description: '线上生成微信支付宝截图', url: 'http://www.12tool.com/' },
+          { title: '临时邮箱', description: '临时随机生成一个存在10分钟的邮箱提供接收邮件', url: 'https://10minutemail.one/zh' },
           { title: '文件传输', description: '临时传送助手-端对端无需担心隐私泄露', url: 'https://wormhole.app/'}
         ]
       }
