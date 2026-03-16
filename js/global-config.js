@@ -1,35 +1,35 @@
-// --- 核心配置与APP定义 ---
+// --- 核心配置与全局数据定义 ---
 window.GLOBAL_CONFIG = {
-    // APP 列表 (用于九宫格切换)
-    APPS: [
+    // 悬浮显示的通知公告列表 (新增了 icon、desc 和 color 配置)
+    NOTICES:[
         { 
-            id: 'design', 
-            name: '设计导航', 
-            icon: 'layout-grid', 
-            type: 'standard', // 标准卡片
-            dataVar: 'DESIGN_DATA', // 对应 window.DESIGN_DATA
-            desc: '设计师必备灵感库'
+            title: '自在导航 V2.0 焕新上线！', 
+            desc: '全新的视觉体验，更丰富的实用工具',
+            date: '03-16', 
+            icon: 'rocket',
+            color: 'text-blue-500 bg-blue-100 dark:bg-blue-500/20',
+            url: 'https://www.zizao.top' 
         },
         { 
-            id: 'font', 
-            name: '字体仓库', 
-            icon: 'type', 
-            type: 'cover', // 封面卡片
-            dataVar: 'FONT_DATA', // 对应 window.FONT_DATA
-            desc: '精选免费商用字体'
+            title: '新增免版权图片与音视频专区', 
+            desc: '收录百余个高质量免费素材站点',
+            date: '03-15', 
+            icon: 'image',
+            color: 'text-orange-500 bg-orange-100 dark:bg-orange-500/20',
+            url: 'https://www.zizao.top' 
         },
         { 
-            id: 'prompt', 
-            name: 'AI 提示词', 
-            icon: 'sparkles', 
-            type: 'prompt', // 提示词卡片
-            dataVar: 'PROMPT_DATA', // 对应 window.PROMPT_DATA
-            desc: 'Midjourney/SD 咒语'
+            title: '提交收录申请或建议', 
+            desc: '发现好的网站？快来提交给我们吧',
+            date: '03-10', 
+            icon: 'mail-plus',
+            color: 'text-emerald-500 bg-emerald-100 dark:bg-emerald-500/20',
+            url: 'https://www.zizao.top' 
         }
     ],
 
     // 搜索引擎配置
-    SEARCH_ENGINES: [
+    SEARCH_ENGINES:[
         { name: '百度', url: 'https://www.baidu.com/s?wd=', placeholder: '搜索 百度...' },
         { name: '形近字', url: 'https://tools.zizao.top/chaoyin/?mode=similar', placeholder: '请输入单字...' },
         { name: '百度AI', url: 'https://chat.baidu.com/search?word=', placeholder: '搜索 百度AI...' },
@@ -40,10 +40,9 @@ window.GLOBAL_CONFIG = {
         { name: '必应', url: 'https://www.cn.bing.com/search?q=', placeholder: '搜索 Bing...' },
         { name: '谷歌', url: 'https://www.google.com/search?q=', placeholder: '搜索 Google...' },
     ],
-    
 
     // 顶部左侧链接
-    HEADER_LINKS: [
+    HEADER_LINKS:[
         { title: '自在造字首页', url: 'https://www.zizao.top' },
         { title: '字体产品列表', url: 'https://www.zizao.top/fonts' },
         { title: '可变实验室', url: 'https://vf.zizao.top' },
@@ -51,7 +50,7 @@ window.GLOBAL_CONFIG = {
     ],
 
     // 快捷链接
-    QUICK_LINKS: [
+    QUICK_LINKS:[
         { title: '视频在线下载', url: 'https://snapany.com/zh' },
         { title: 'Google Ai Studio', url: 'https://aistudio.google.com' },
         { title: 'Google Gemini', url: 'https://gemini.google.com/app' },

@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. 安全检查
+    // 安全检查
     if (!window.GLOBAL_CONFIG) {
         console.error('Config not found!');
         return;
     }
 
-    const { SEARCH_ENGINES, HEADER_LINKS, QUICK_LINKS, APPS } = window.GLOBAL_CONFIG;
+    const { SEARCH_ENGINES, HEADER_LINKS, QUICK_LINKS, NOTICES } = window.GLOBAL_CONFIG;
     
     // 工具函数
     const debounce = (func, wait) => {
@@ -24,25 +24,20 @@ document.addEventListener('DOMContentLoaded', () => {
         activeSubCategoryIds: {},
         isProgrammaticScroll: false,
         scrollTimer: null,
-        currentAppId: APPS[0].id,
-        currentAppType: APPS[0].type,
-        currentCategories: [], 
+        currentCategories: window.DESIGN_DATA ||[], 
     };
 
-    // --- 新增：核心搜索修复 ---
+    // 搜索回车及按钮处理
     const setupSearchSubmit = () => {
         const form = document.getElementById('search-form');
         const input = document.getElementById('search-input');
 
         if (!form || !input) return;
 
-        // 监听 Submit 事件（同时支持回车键和点击右侧箭头按钮）
         form.addEventListener('submit', (e) => {
-            e.preventDefault(); // 关键：阻止表单默认提交刷新
-            
+            e.preventDefault(); 
             const val = input.value.trim();
             if (val) {
-                // 拼接URL，使用 encodeURIComponent 处理特殊字符
                 const targetUrl = state.activeEngine.url + encodeURIComponent(val);
                 window.open(targetUrl, '_blank');
             } else {
@@ -51,14 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // --- 数据加载 ---
-    const loadAppData = (appId) => {
-        const app = APPS.find(a => a.id === appId);
-        if (!app) return;
-
-        state.currentAppId = app.id;
-        state.currentAppType = app.type;
-        const data = window[app.dataVar] || [];
+    // 数据初始化
+    const initData = () => {
+        const data = window.DESIGN_DATA ||[];
         state.currentCategories = data;
 
         state.activeCategoryId = data[0]?.id || '';
@@ -69,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        updateAppHeaderUI(app);
         renderSidebarLinks('desktop-nav-links');
         renderSidebarLinks('mobile-nav-links', true);
         renderContent();
@@ -77,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo({ top: 0, behavior: 'auto' });
     };
 
-    // --- 顶部链接 ---
+    // 顶部链接
     const renderHeaderLinks = () => {
         const container = document.getElementById('header-links');
         if (!container) return;
@@ -90,11 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
     };
 
-    // --- 快捷链接 (支持横滑) ---
+    // 快捷链接
     const renderQuickLinks = () => {
         const container = document.getElementById('quick-links');
         if (!container) return;
-        // 注意：这里加入了 shrink-0 和 whitespace-nowrap 确保在手机上横向排列不换行
         container.innerHTML = QUICK_LINKS.map(link => `
             <a href="${link.url}" target="_blank" rel="noopener noreferrer"
                class="group relative shrink-0 whitespace-nowrap overflow-hidden rounded-xl md:rounded-2xl border border-gray-200 bg-gray-50/50 px-3 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-medium text-gray-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:bg-white/60 hover:backdrop-blur-md hover:text-[#FF8C19] hover:shadow-lg hover:shadow-orange-500/10 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700/60 dark:hover:text-[#FF8C19] dark:hover:border-gray-600">
@@ -103,66 +91,35 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
     };
 
-    // --- APP 切换菜单 (九宫格大厂风格) ---
-    const renderAppSwitcher = () => {
-        const grid = document.getElementById('app-grid');
-        if (!grid) return;
+    // 渲染通知公告：去除了标题 hover 变色效果，保持简洁
+    const renderNotices = () => {
+        const list = document.getElementById('notice-list');
+        if (!list || !NOTICES) return;
 
-        // 1. 设置容器为 Grid 布局 (3列)，以及内边距
-        grid.className = "grid grid-cols-3 gap-2 p-1 max-h-[320px] overflow-y-auto custom-scrollbar";
-
-        grid.innerHTML = APPS.map(app => {
-            const isActive = app.id === state.currentAppId;
-            
-            // 2. 渲染每个格子
-            return `
-            <div class="app-switch-item group flex flex-col items-center justify-center gap-2 p-3 rounded-xl cursor-pointer transition-all duration-300 border border-transparent
-                ${isActive 
-                    ? 'bg-orange-50 border-orange-100/50 dark:bg-white/10 dark:border-white/5 shadow-sm' 
-                    : 'hover:bg-gray-100 dark:hover:bg-gray-800 hover:scale-[1.02]'
-                }" 
-                data-id="${app.id}" title="${app.desc}">
-                
-                <!-- 图标容器 -->
-                <div class="w-10 h-10 md:w-11 md:h-11 rounded-2xl flex items-center justify-center transition-all duration-300
-                    ${isActive 
-                        ? 'bg-[#FF8C19] text-white shadow-lg shadow-orange-500/30' 
-                        : 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300 group-hover:bg-white group-hover:shadow-md dark:group-hover:bg-gray-600'
-                    }">
-                    <i data-lucide="${app.icon}" class="w-5 h-5 md:w-6 md:h-6"></i>
+        list.innerHTML = NOTICES.map(notice => `
+            <a href="${notice.url}" target="_blank" class="group/item flex items-center gap-3.5 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-all duration-300">
+                <!-- 左侧图标区 -->
+                <div class="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-full ${notice.color || 'bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400'} group-hover/item:scale-110 transition-transform duration-300 shadow-sm">
+                    <i data-lucide="${notice.icon || 'bell'}" class="w-5 h-5"></i>
                 </div>
-                
-                <!-- 文字标题 -->
-                <span class="text-[12px] font-medium tracking-wide text-center w-full truncate px-1 transition-colors
-                    ${isActive ? 'text-[#FF8C19]' : 'text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-200'}">
-                    ${app.name}
-                </span>
-            </div>
-            `;
-        }).join('');
+                <!-- 右侧文本区 -->
+                <div class="flex flex-col min-w-0 flex-1 justify-center">
+                    <span class="text-[14px] font-bold text-gray-800 dark:text-gray-100 truncate leading-tight mb-1">
+                        ${notice.title}
+                    </span>
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="text-[12px] text-gray-500 dark:text-gray-400 truncate">${notice.desc || notice.date}</span>
+                        ${notice.desc ? `<span class="text-[10px] text-gray-400/80 dark:text-gray-500 whitespace-nowrap font-medium">${notice.date}</span>` : ''}
+                    </div>
+                </div>
+            </a>
+        `).join('');
 
-        if (window.lucide) window.lucide.createIcons({ root: grid });
-
-        // 绑定点击事件
-        grid.querySelectorAll('.app-switch-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const id = item.getAttribute('data-id');
-                if (id !== state.currentAppId) {
-                    loadAppData(id);
-                    renderAppSwitcher(); // 重新渲染以更新选中状态
-                }
-            });
-        });
+        // 重新初始化这段 HTML 内的 lucide 图标
+        if (window.lucide) window.lucide.createIcons({ root: list });
     };
 
-    const updateAppHeaderUI = (app) => {
-        const nameEl = document.getElementById('current-app-name');
-        const mobileNameEl = document.getElementById('mobile-app-name');
-        if(nameEl) nameEl.textContent = app.name;
-        if(mobileNameEl) mobileNameEl.textContent = app.name;
-    };
-
-    // --- 搜索引擎切换 ---
+    // 搜索引擎切换
     const renderEngineSwitcher = () => {
         const container = document.getElementById('engine-switcher');
         if (!container) return;
@@ -212,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', debounce(updateUI, 100));
     };
 
-    // --- 侧边栏 ---
+    // 侧边栏
     const renderSidebarLinks = (containerId, isMobile = false) => {
         const container = document.getElementById(containerId);
         if (!container) return;
@@ -240,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // --- 内容渲染 ---
+    // 内容渲染
     const renderContent = () => {
         const container = document.getElementById('content-area');
         if (!container) return;
@@ -259,14 +216,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <span class="hidden h-5 w-px bg-gray-300 dark:bg-gray-700 md:block mx-2"></span>
                         
-                        <!-- Tabs 容器 (已优化：支持横向滑动，移除 flex-wrap) -->
-                        <div class="relative flex items-center overflow-x-auto no-scrollbar pb-1 max-w-full gap-1 p-1 bg-gray-100/50 dark:bg-black/20 rounded-full" id="tabs-${cat.id}"></div>                    </div>
+                        <!-- Tabs 容器 -->
+                        <div class="relative flex items-center overflow-x-auto no-scrollbar pb-1 max-w-full gap-1 p-1 bg-gray-100/50 dark:bg-black/20 rounded-full" id="tabs-${cat.id}"></div>                    
+                    </div>
                     
-                    <div id="grid-${cat.id}" class="grid gap-4 md:gap-5 relative z-10 ${
-                        state.currentAppType === 'prompt' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 
-                        state.currentAppType === 'cover' ? 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5' : 
-                        'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'
-                    }"></div>
+                    <div id="grid-${cat.id}" class="grid gap-4 md:gap-5 relative z-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"></div>
                 </div>
             </section>
         `).join('');
@@ -336,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateTabUI();
     };
 
-    // --- 核心：多态卡片渲染 ---
+    // 核心卡片渲染（单类型卡片体系）
     const renderCards = (cat) => {
         const container = document.getElementById(`grid-${cat.id}`);
         const activeSubId = state.activeSubCategoryIds[cat.id];
@@ -349,103 +303,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const iconCfg = activeSub.iconConfig || { gradient: 'from-blue-400 to-cyan-400', iconName: 'link' };
 
-        // 1. 标准设计卡片 (支持 localIcon)
-        if (state.currentAppType === 'standard') {
-            container.innerHTML = activeSub.sites.map(site => {
-                let iconHtml;
-                if (site.localIcon) {
-                    iconHtml = `
-                        <img src="${site.localIcon}" alt="${site.title}" 
-                             class="h-9 w-9 shrink-0 rounded-full object-cover bg-white shadow-sm ring-1 ring-black/5 dark:ring-white/10 group-hover:scale-110 transition-transform duration-500">
-                    `;
-                } else {
-                    iconHtml = `
-                        <div class="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${iconCfg.gradient} shadow-md text-white ring-1 ring-black/5 dark:ring-white/10 group-hover:scale-110 transition-transform duration-500">
-                            <i data-lucide="${iconCfg.iconName}" class="w-5 h-5"></i>
-                        </div>
-                    `;
-                }
+        container.innerHTML = activeSub.sites.map(site => {
+            let iconHtml;
+            if (site.localIcon) {
+                iconHtml = `
+                    <img src="${site.localIcon}" alt="${site.title}" 
+                         class="h-9 w-9 shrink-0 rounded-full object-cover bg-white shadow-sm ring-1 ring-black/5 dark:ring-white/10 group-hover:scale-110 transition-transform duration-500">
+                `;
+            } else {
+                iconHtml = `
+                    <div class="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${iconCfg.gradient} shadow-md text-white ring-1 ring-black/5 dark:ring-white/10 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="${iconCfg.iconName}" class="w-5 h-5"></i>
+                    </div>
+                `;
+            }
 
-                return `
-                <a href="${site.url}" target="_blank" rel="noopener noreferrer"
-                   class="site-card group relative flex h-full flex-row items-start gap-3 md:gap-4 overflow-hidden rounded-xl md:rounded-2xl p-4 md:p-5 transition-all duration-300">
-                    ${iconHtml}
-                    <div class="relative min-w-0 flex-1 pt-0.5">
-                        <h3 class="truncate text-[15px] md:text-[16px] font-bold text-gray-800 dark:text-gray-100 mb-0.5 md:mb-1">${site.title}</h3>
-                        <p class="h-[40px] overflow-hidden text-xs leading-relaxed text-gray-500 dark:text-gray-400 line-clamp-2">${site.description}</p>
-                    </div>
-                </a>
-            `}).join('');
-        }
-        
-        // 2. 字体/封面卡片
-        else if (state.currentAppType === 'cover') {
-            container.innerHTML = activeSub.sites.map(site => `
-                <a href="${site.url}" target="_blank" rel="noopener noreferrer"
-                   class="group flex flex-col transition-all duration-300 p-0 relative hover:-translate-y-1">
-                    
-                    <div class="w-full aspect-[16/9] overflow-hidden rounded-lg relative shadow-sm hover:shadow-[0_15px_30px_-5px_rgba(0,0,0,0.08)] transition-shadow duration-300 bg-gray-100 dark:bg-gray-800">
-                        
-                        <!-- 极简装饰性标签：半透明磨砂感 -->
-                        ${site.badge ? `
-                            <div class="absolute top-2 right-2 z-20 px-1.5 py-0.5 text-[9px] font-bold tracking-widest text-white/90 bg-black/20 backdrop-blur-md rounded border border-white/10 pointer-events-none uppercase">
-                                ${site.badge}
-                            </div>
-                        ` : ''}
-                        
-                        <img src="${site.image}" alt="${site.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
-                    </div>
-        
-                    <div class="pt-2 flex items-center justify-center">
-                        <!-- 标题恢复原样，悬浮不再变色 -->
-                        <h3 class="text-sm font-bold text-gray-700 dark:text-gray-300 tracking-wide text-center transition-colors">
-                            ${site.title}
-                        </h3>
-                    </div>
-                </a>
-            `).join('');
-        }
-        
-        // 3. AI 提示词卡片
-        else if (state.currentAppType === 'prompt') {
-            container.innerHTML = activeSub.sites.map(site => `
-                <div class="site-card prompt-card group flex flex-col h-full overflow-hidden rounded-2xl p-0 transition-all duration-300">
-                    <div class="w-full h-40 md:h-48 bg-gray-100 dark:bg-gray-800 relative overflow-hidden shrink-0 cursor-pointer" onclick="window.open('${site.image}', '_blank')">
-                        <img src="${site.image}" alt="${site.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
-                    </div>
-                    <div class="flex-1 p-3 flex flex-col gap-2 bg-white/60 dark:bg-gray-900/60 backdrop-blur-md">
-                        <div class="flex justify-between items-center">
-                            <h3 class="text-sm font-bold text-gray-800 dark:text-gray-200 truncate pr-2">${site.title}</h3>
-                            <button class="copy-trigger text-[10px] px-2 py-1 rounded-md bg-gray-200 hover:bg-[#FF8C19] hover:text-white dark:bg-gray-700 dark:hover:bg-[#FF8C19] text-gray-600 dark:text-gray-300 font-medium transition-colors flex items-center gap-1 active:scale-95 outline-none">
-                                <i data-lucide="copy" class="w-3 h-3"></i> <span>复制</span>
-                            </button>
-                        </div>
-                        <textarea class="w-full h-20 text-xs leading-relaxed p-2 rounded-lg bg-gray-50 dark:bg-black/40 border border-gray-200 dark:border-gray-700 outline-none text-gray-600 dark:text-gray-300 resize-none focus:bg-white dark:focus:bg-black/60 focus:border-[#FF8C19] transition-all placeholder-gray-400" spellcheck="false">${site.prompt}</textarea>
-                    </div>
+            return `
+            <a href="${site.url}" target="_blank" rel="noopener noreferrer"
+               class="site-card group relative flex h-full flex-row items-start gap-3 md:gap-4 overflow-hidden rounded-xl md:rounded-2xl p-4 md:p-5 transition-all duration-300">
+                ${iconHtml}
+                <div class="relative min-w-0 flex-1 pt-0.5">
+                    <h3 class="truncate text-[15px] md:text-[16px] font-bold text-gray-800 dark:text-gray-100 mb-0.5 md:mb-1">${site.title}</h3>
+                    <p class="h-[40px] overflow-hidden text-xs leading-relaxed text-gray-500 dark:text-gray-400 line-clamp-2">${site.description}</p>
                 </div>
-            `).join('');
-
-            container.querySelectorAll('.copy-trigger').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const textarea = btn.parentElement.nextElementSibling;
-                    const text = textarea.value; 
-                    const span = btn.querySelector('span');
-                    
-                    navigator.clipboard.writeText(text).then(() => {
-                        const originalText = span.textContent;
-                        span.textContent = '已复制';
-                        btn.classList.add('bg-green-100', 'text-green-600', 'hover:bg-green-100', 'hover:text-green-600');
-                        btn.classList.remove('bg-gray-200', 'hover:bg-[#FF8C19]', 'hover:text-white');
-                        setTimeout(() => {
-                            span.textContent = originalText;
-                            btn.classList.remove('bg-green-100', 'text-green-600', 'hover:bg-green-100', 'hover:text-green-600');
-                            btn.classList.add('bg-gray-200', 'hover:bg-[#FF8C19]', 'hover:text-white');
-                        }, 2000);
-                    });
-                });
-            });
-        }
+            </a>
+        `}).join('');
         
         if (window.lucide) window.lucide.createIcons({ root: container });
     };
@@ -483,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const animateCount = () => {
-        const els = [document.getElementById('site-count'), document.getElementById('mobile-site-count')];
+        const els =[document.getElementById('site-count'), document.getElementById('mobile-site-count')];
         const total = state.currentCategories.reduce((acc, cat) => acc + (cat.subCategories ? cat.subCategories.reduce((s, sub) => s + (sub.sites ? sub.sites.length : 0), 0) : 0), 0);
         els.forEach(el => el && (el.textContent = total));
     };
@@ -514,6 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => overlay.classList.add('hidden'), 300);
         }
     };
+    
     document.getElementById('mobile-menu-btn')?.addEventListener('click', () => toggleMobileMenu(true));
     document.getElementById('mobile-sidebar-overlay')?.addEventListener('click', () => toggleMobileMenu(false));
 
@@ -521,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderHeaderLinks();
     renderQuickLinks();
     renderEngineSwitcher();
-    renderAppSwitcher();
-    loadAppData(state.currentAppId);
-    setupSearchSubmit(); // 执行搜索初始化
+    renderNotices();
+    initData();
+    setupSearchSubmit();
 });
