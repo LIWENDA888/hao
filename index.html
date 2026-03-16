@@ -15,7 +15,7 @@
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Text', 'Helvetica Neue', 'Arial', 'sans-serif'] },
+                    fontFamily: { sans:['-apple-system', 'BlinkMacSystemFont', 'SF Pro Text', 'Helvetica Neue', 'Arial', 'sans-serif'] },
                     boxShadow: { 'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)' },
                     animation: { 'fade-in': 'fadeIn 0.5s ease-out forwards', 'fade-in-up': 'fadeInUp 0.4s ease-out forwards', 'blob': 'blob 10s infinite' },
                     keyframes: {
@@ -51,18 +51,21 @@
             
             <div class="relative z-50 flex items-center gap-2 md:gap-4 pl-4 shrink-0 pointer-events-auto">
                 
-                <!-- 切换 APP 按钮 (九宫格版) -->
-                <div class="relative group h-full flex items-center" id="app-switcher-container">
+                <!-- 通知公告弹窗 -->
+                <div class="relative group h-full flex items-center" id="notice-container">
                     <button class="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium text-gray-500 hover:text-[#FF8C19] hover:bg-black/5 transition-all dark:text-gray-400 dark:hover:text-[#FF8C19] dark:hover:bg-white/10 outline-none">
-                        <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
-                        <span id="current-app-name">设计导航</span>
+                        <div class="relative">
+                            <i data-lucide="bell" class="w-4 h-4"></i>
+                            <span class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-red-500 rounded-full border border-white dark:border-[#1a1a1a]"></span>
+                        </div>
+                        <span>通知公告</span>
                         <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"></i>
                     </button>
 
-                    <!-- 下拉菜单 -->
+                    <!-- 下拉菜单：宽度调大至 340px，以容纳左右排版 -->
                     <div class="absolute right-0 top-[80%] pt-4 w-[340px] opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-[60]">
                         <div class="p-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-gray-200 shadow-2xl dark:bg-gray-900/95 dark:border-gray-800">
-                            <div id="app-grid" class="max-h-[320px] overflow-y-auto custom-scrollbar"></div>
+                            <div id="notice-list" class="flex flex-col gap-1 max-h-[360px] overflow-y-auto custom-scrollbar"></div>
                         </div>
                     </div>
                 </div>
@@ -83,7 +86,7 @@
         <div class="mb-8 px-2 flex flex-col items-center">
              <img src="https://pic3.fukit.cn/autoupload/NWINCyTOTWqNUcPQazQq69iO_OyvX7mIgxFBfDMDErs/20251123/D8a9/219X79/haologo.png/webp" alt="Logo" class="h-10 w-auto object-contain mb-2">
              <div class="mt-2 text-xs text-gray-500 font-medium tracking-wide uppercase opacity-70">
-                 当前库: <span id="mobile-app-name" class="font-bold text-[#FF8C19]">设计</span>
+                 设计师的灵感百宝库
              </div>
         </div>
         <nav id="mobile-nav-links" class="space-y-2 pb-20"></nav>
@@ -123,7 +126,7 @@
                             </button>
                         </form>
                     </div>
-                    <!-- 快捷链接区 (已修复：支持横向滑动，移除换行) -->
+                    <!-- 快捷链接区 -->
                     <div id="quick-links" class="flex items-center gap-2 md:gap-3 pl-1 md:pl-2 relative z-10 overflow-x-auto no-scrollbar mask-gradient-right py-2 -my-3"></div>
                </div>
 
@@ -143,8 +146,6 @@
 
     <script src="js/global-config.js"></script>
     <script src="js/design-data.js"></script>
-    <script src="js/font-data.js"></script>
-    <script src="js/prompt-data.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
