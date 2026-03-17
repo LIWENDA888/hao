@@ -47,6 +47,7 @@ window.GLOBAL_CONFIG = {
         { title: '字体产品列表', url: 'https://www.zizao.top/fonts' },
         { title: '可变实验室', url: 'https://vf.zizao.top' },
         { title: '超引形近字', url: 'https://chaoyin.zizao.top' },
+        { title: '免费商用字体', url: 'https://free.zizao.top' },
     ],
 
     // 快捷链接
