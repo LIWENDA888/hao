@@ -45,7 +45,7 @@ window.GLOBAL_CONFIG = {
     HEADER_LINKS:[
         { title: '自在造字首页', url: 'https://www.zizao.top' },
         { title: '字体产品列表', url: 'https://www.zizao.top/fonts' },
-        { title: '可变实验室', url: 'https://vf.zizao.top' },
+        { title: '自在 · 可变', url: 'https://vf.zizao.top' },
         { title: '超引形近字', url: 'https://chaoyin.zizao.top' },
         { title: '免费商用字体', url: 'https://free.zizao.top' },
     ],
