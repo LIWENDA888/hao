@@ -54,7 +54,7 @@ window.GLOBAL_CONFIG = {
     QUICK_LINKS:[
         { title: 'Google Ai Studio', url: 'https://aistudio.google.com' },
         { title: 'Google Gemini', url: 'https://gemini.google.com/app' },
-        { title: 'Xiaomi Mimo Studio', url: 'https://gemini.google.com/app' },
+        { title: 'Xiaomi Mimo Studio', url: 'https://aistudio.xiaomimimo.com/' },
         { title: 'Github', url: 'https://github.com' },
         { title: 'Cloudflare', url: 'https://cloudflare.com' },
         { title: 'Aliyun', url: 'https://aliyun.com' },
