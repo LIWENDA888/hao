@@ -52,12 +52,11 @@ window.GLOBAL_CONFIG = {
 
     // 快捷链接
     QUICK_LINKS:[
-        { title: '视频在线下载', url: 'https://snapany.com/zh' },
         { title: 'Google Ai Studio', url: 'https://aistudio.google.com' },
         { title: 'Google Gemini', url: 'https://gemini.google.com/app' },
+        { title: 'Xiaomi Mimo Studio', url: 'https://gemini.google.com/app' },
         { title: 'Github', url: 'https://github.com' },
         { title: 'Cloudflare', url: 'https://cloudflare.com' },
-        { title: '阿里云', url: 'https://aliyun.com' },
-        { title: 'Lovart', url: 'https://www.lovart.ai' },
+        { title: 'Aliyun', url: 'https://aliyun.com' },
     ]
 };

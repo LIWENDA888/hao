@@ -184,6 +184,7 @@ window.DESIGN_DATA = [
         iconConfig: { gradient: 'from-violet-500 to-purple-600', iconName: 'palette' },
         sites: [
           { title:'即梦AI', description:'字节跳动出品，文生图、图生图，每日有固定的免费额度',url:'https://jimeng.jianying.com'},
+          { title:'Lovart', description:'最适合设计师使用的聚合平台，可调用全球的API大模型',url:'https://www.lovart.ai'},
           { title:'哩布哩布AI', description:'国内领先的模型库社区，拥有海量精细化LoRA模型',url:'https://www.liblib.art/ '},
           { title:'无界AI', description:'算力强大，模型风格极多，适合二次元及插画创作',url:'https://wujieai.com'},
           { title:'堆友', description:'阿里设计师平台，主打3D素材、头像及电商海报生成',url:'https://d.design'},
@@ -867,7 +868,8 @@ window.DESIGN_DATA = [
           { title: '卡通头像生成', description: '在线设计卡通头像并下载', url: 'https://personas.draftbit.com' },
           { title: '聊天截图生成', description: '线上生成微信支付宝截图', url: 'http://www.12tool.com/' },
           { title: '临时邮箱', description: '临时随机生成一个存在10分钟的邮箱提供接收邮件', url: 'https://10minutemail.one/zh' },
-          { title: '文件传输', description: '临时传送助手-端对端无需担心隐私泄露', url: 'https://wormhole.app/'}
+          { title: '文件传输', description: '临时传送助手-端对端无需担心隐私泄露', url: 'https://wormhole.app/'},
+          { title: 'Snapany', description: '无水印下载众多常见视频网站的内容', url: 'https://snapany.com/zh'}
         ]
       }
     ],
