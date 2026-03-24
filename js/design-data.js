@@ -861,7 +861,7 @@ window.DESIGN_DATA = [
         name: '#偏门利器', 
         iconConfig: { gradient: 'from-slate-500 to-gray-600', iconName: 'settings' },
         sites: [
-          { title: 'WDC-C盘清理', description: 非常有效的C盘清理工具，且不会导致无法正常开机', url: 'https://www.wisecleaner.com/wise-disk-cleaner.html'},
+          { title: 'WDC-C盘清理', description: '非常有效的C盘清理工具，且不会导致无法正常开机', url: 'https://www.wisecleaner.com/wise-disk-cleaner.html'},
           { title: '文本生成二维码', description: '仅支持文本生成二维码', url: 'https://swiftqr.tanpok.com' },
           { title: 'SMS', description: '虚拟国外手机号码短信验证', url: 'https://sms-activate.io/cn?%2Fcn=' },
           { title: '二维码生成', description: '任何内容都可以生成二维码', url: 'https://www.qrcode-monkey.com/' },
