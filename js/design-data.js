@@ -521,6 +521,20 @@ window.DESIGN_DATA = [
           { title:'Picdiet', description:'对压缩对象没有任何限制且完全免费',url:'https://www.picdiet.com/zh-cn '},
           { title:'Jpeg.io', description:'将其转换为高度优化的图片',url:'https://www.jpeg.io/ '}
         ]
+      },
+      { 
+        id: 'F8', 
+        name: '#格式转换', 
+        iconConfig: { gradient: 'from-blue-400 to-indigo-500', iconName: 'refresh-ccw' },
+        sites: [
+          { title: 'Aconvert', description: '【推荐】支持转换各类格式文件，包括PNG转ICO', url: 'https://www.aconvert.com/cn/icon/' },
+          { title: 'Squoosh', description: '【推荐】完全免费Google官方出品，断网也可以本地处理', url: 'https://squoosh.app' },
+          { title: 'Convertio', description: '在线转换任何格式的视频文件', url: 'https://convertio.co/zh/video-converter' },
+          { title: 'Ilovepdf', description: '支持多种格式之间进行互转', url: 'https://www.ilovepdf.com/' },
+          { title: 'Alltoall', description: '支持多达200多种格式在线转换', url: 'http://www.alltoall.net' },
+          { title: 'Pdfconvertonline', description: '网站支持各类文件之间进行互转', url: 'https://www.pdfconvertonline.com/cn/' },
+          { title: '图像处理工具集', description : '在线处理PDF-GIF-抠图-压缩等的图片工具', url : 'https://docsmall.com'}
+        ]
       }
     ],
   },
@@ -844,20 +858,6 @@ window.DESIGN_DATA = [
       },
       { 
         id: 'L3', 
-        name: '#格式转换', 
-        iconConfig: { gradient: 'from-slate-500 to-gray-600', iconName: 'refresh-ccw' },
-        sites: [
-          { title: 'Aconvert', description: '【推荐】支持转换各类格式文件，包括PNG转ICO', url: 'https://www.aconvert.com/cn/icon/' },
-          { title: 'AC文件转换', description: '【推荐】支持的类型全-使用方便', url: 'https://www.aconvert.com/cn' },
-          { title: 'Convertio', description: '在线转换任何格式的视频文件', url: 'https://convertio.co/zh/video-converter' },
-          { title: 'Ilovepdf', description: '支持多种格式之间进行互转', url: 'https://www.ilovepdf.com/' },
-          { title: 'Alltoall', description: '支持多达200多种格式在线转换', url: 'http://www.alltoall.net' },
-          { title: 'Pdfconvertonline', description: '网站支持各类文件之间进行互转', url: 'https://www.pdfconvertonline.com/cn/' },
-          { title: '图像处理工具集', description : '在线处理PDF-GIF-抠图-压缩等的图片工具', url : 'https://docsmall.com'}
-        ]
-      },
-      { 
-        id: 'L4', 
         name: '#偏门利器', 
         iconConfig: { gradient: 'from-slate-500 to-gray-600', iconName: 'settings' },
         sites: [
